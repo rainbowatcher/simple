@@ -1,0 +1,43 @@
+{
+  "name": "simple",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec jiti src/server.ts",
+    "?dev": "start dev server",
+    "debug": "pnpm dev -b",
+    "start": "cross-env NODE_ENV=production pnpm dev",
+    "?start": "start server.",
+    "build": "vite build",
+    "?build": "build both frontend and backend code."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "h3": "^1.6.0",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.1",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vueuse/core": "^9.13.0",
+    "cross-env": "^7.0.3",
+    "execa": "^7.1.0",
+    "jiti": "^1.17.2",
+    "mri": "^1.2.0",
+    "naive-ui": "^2.34.3",
+    "nodemon": "^2.0.21",
+    "picocolors": "^1.0.0",
+    "rollup-plugin-visualizer": "^5.9.0",
+    "sirv": "^2.0.2",
+    "unocss": "^0.50.4",
+    "unplugin-auto-import": "^0.15.1",
+    "unplugin-vue-components": "^0.24.1",
+    "unplugin-vue-router": "^0.5.4",
+    "vite": "^4.1.4",
+    "vue-router": "4"
+  }
+}
