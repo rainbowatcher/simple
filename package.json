@@ -20,9 +20,12 @@
     "release": "bumpp",
     "?release": "release package.",
     "up": "taze -I",
-    "?up": "update dependencies."
+    "?up": "update dependencies.",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.5.0",
+    "@commitlint/config-conventional": "^17.4.4",
     "@iconify-json/mdi": "^1.1.50",
     "@rainbowatcher/eslint-config": "^0.0.1-beta.3",
     "@types/fs-extra": "^11.0.1",
@@ -42,6 +45,7 @@
     "fuse.js": "^6.6.2",
     "h3": "^1.6.2",
     "handlebars": "^4.7.7",
+    "husky": "^8.0.3",
     "jiti": "^1.18.2",
     "magic-regexp": "^0.6.3",
     "mri": "^1.2.0",
