@@ -1,5 +1,3 @@
-import { createRegExp } from "magic-regexp"
-import { domainRE } from "src/server/consts/regexp"
 import { z } from "zod"
 import validator from "validator"
 
@@ -26,7 +24,7 @@ export class DataSourceDO {
     public port: number | string,
     public user?: string,
     public password?: string,
-    public database?: string
+    public database?: string,
   ) {}
 
   static fromVO(vo: DataSourceVO) {
@@ -35,7 +33,7 @@ export class DataSourceDO {
       Number(vo.port),
       vo.user,
       vo.password,
-      vo.database
+      vo.database,
     )
   }
 }
@@ -55,10 +53,10 @@ export const dataSourceVoValidator = z.object({
   host: z
     .string()
     .refine(
-      (str) => validator.isFQDN(str) || validator.isIP(str),
-      "Not a valid domain or IP address"
+      str => validator.isFQDN(str) || validator.isIP(str),
+      "Not a valid domain or IP address",
     ),
-  port: z.string().refine((str) => validator.isPort(str)),
+  port: z.string().refine(str => validator.isPort(str)),
   user: z.string().optional(),
   password: z.string().optional(),
   database: z.string().optional(),

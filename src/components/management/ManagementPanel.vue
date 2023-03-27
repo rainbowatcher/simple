@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import DataSourceManage from '../settings/DataSourceManage.vue';
-
 </script>
 
 <template>

@@ -1,12 +1,12 @@
 {
   "name": "simple",
+  "type": "module",
   "version": "0.0.1-alpha.1",
   "private": true,
+  "packageManager": "pnpm@7.30.3",
   "description": "simple your work.",
   "author": "rainbowatcher <rainbow-w@qq.com>",
-  "type": "module",
   "license": "MIT",
-  "packageManager": "pnpm@7.30.3",
   "scripts": {
     "dev": "nodemon src/server/server.ts",
     "?dev": "run server in dev mode.",

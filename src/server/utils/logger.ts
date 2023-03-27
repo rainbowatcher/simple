@@ -1,33 +1,36 @@
+import path from "node:path"
+import util from "node:util"
+import type { PathLike } from "node:fs"
+import { formatDate } from "@vueuse/core"
+import * as fs from "fs-extra"
+import type {
+  ConsolaReporterArgs,
+  ConsolaReporterLogObject,
+  BasicReporterOptions } from "consola"
 import consola, {
   BasicReporter,
   FancyReporter,
-  ConsolaReporterArgs,
-  ConsolaReporterLogObject,
-  BasicReporterOptions,
-LogLevel,
+  LogLevel,
 } from "consola"
-import { getLogDir, projectName } from "../utils/path"
-import * as fs from "fs-extra"
-import path from "node:path"
-import { formatDate } from "@vueuse/core"
-import util from "node:util"
-import { PathLike } from "node:fs"
 import mri from "mri"
+import { getLogDir, projectName } from "../utils/path"
 
 interface FileReporterOptions extends BasicReporterOptions {
   path: PathLike
 }
 
 class FileReporter extends BasicReporter {
+  path: PathLike
   constructor(opts: FileReporterOptions) {
     super(
       Object.assign(
         {
           dateFormat: "YYYY-MM-DD HH:mm:ss",
         },
-        opts
-      )
+        opts,
+      ),
     )
+    this.path = opts.path
   }
 
   formatLogObj(logObj: ConsolaReporterLogObject) {
@@ -43,17 +46,16 @@ class FileReporter extends BasicReporter {
       dateStr,
       logLevelStr,
       logObj.tag,
-      msgStr
+      msgStr,
     )
 
-    // @ts-expect-error type
-    const stream = fs.createWriteStream(this.options.path, {
+    const stream = fs.createWriteStream(this.path, {
       encoding: "utf-8",
       flags: "a",
     })
     super.log(
       { ...logObj, args: [line], date: new Date(), level: LogLevel.Info },
-      { async, stderr: stream, stdout: stream }
+      { async, stderr: stream, stdout: stream },
     )
   }
 }
@@ -71,11 +73,11 @@ function initLogger() {
   if (!exists) fs.createFileSync(logFilePath)
   const fileRp = new FileReporter({ path: getLogFilePath() })
   const fancyRp = new FancyReporter()
-  
+
   const { debug } = mri(process.argv.slice(2))
   return consola.create({
     defaults: {
-      tag: projectName
+      tag: projectName,
     },
     level: debug ? LogLevel.Debug : LogLevel.Info,
     async: true,

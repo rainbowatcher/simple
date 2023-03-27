@@ -1,13 +1,13 @@
-import h3 from "h3"
 import { createServer } from "node:http"
-import * as vite from "vite"
 import fs from "node:fs"
+import h3 from "h3"
+import * as vite from "vite"
 import sirv from "sirv"
 import { projectRoot } from "./utils/path"
 import useLogger from "./utils/logger"
 import router from "./routes"
 
-const isDev = process.env.NODE_ENV === "production" ? false : true
+const isDev = process.env.NODE_ENV !== "production"
 const logger = useLogger("server")
 
 const app = h3.createApp()
@@ -25,9 +25,13 @@ if (isDev) {
       },
     })
     .then((viteServer) => {
-      server.on("close", () => viteServer.close())
+      server.on("close", () => {
+        viteServer.close().catch(() => logger.error("Vite server stop failed"))
+      })
       // if frontend router did not match,then fallback to backend router
       router.get("/**", h3.fromNodeMiddleware(viteServer.middlewares))
+    }).catch(() => {
+      logger.error("Vite server start failed")
     })
 } else {
   vite.resolveConfig({}, "build").then(async (config) => {
@@ -42,12 +46,14 @@ if (isDev) {
         sirv(config.build?.outDir, {
           // newbee
           single: true,
-        })
-      )
+        }),
+      ),
     )
+  }).catch(() => {
+    logger.error("Get vite build dir failed")
   })
 }
 
 server.listen(3210, () =>
-  logger.info("Server start listening at `http://localhost:%d`", 3210)
+  logger.info("Server start listening at `http://localhost:%d`", 3210),
 )

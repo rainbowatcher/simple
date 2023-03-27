@@ -1,6 +1,6 @@
+import util from "util"
 import h3 from "h3"
 import useLogger from "./logger"
-import util from "util"
 
 const logger = useLogger("http")
 
@@ -25,7 +25,7 @@ class BaseResp<T = any> {
     await h3.send(e, JSON.stringify(this), "json")
   }
 
-  withMsg(msg: string, ...args: any[]) {
+  withMsg(msg: string, ...args: unknown[]) {
     this.message = args ? util.format(msg, ...args) : msg
     return this
   }
@@ -39,14 +39,14 @@ class BaseResp<T = any> {
 export async function parseRequest<T = undefined>(e: h3.H3Event) {
   const method = h3.getMethod(e)
   const url = h3.getRequestURL(e)
-  const pathname = url.pathname
-  const search = url.search
+  const { pathname } = url
+  const { search } = url
   logger.info("Received %s: %s", method, pathname + search)
 
   const headers = h3.getHeaders(e)
   logger.debug("Request headers: %s", headers)
 
-  let body = method === "GET" ? undefined : await h3.readBody<T>(e)
+  const body = method === "GET" ? undefined : await h3.readBody<T>(e)
   if (body) logger.info("Request body: %s", JSON.stringify(body, null, 2))
 
   return {

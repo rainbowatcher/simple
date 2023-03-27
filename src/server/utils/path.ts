@@ -1,6 +1,6 @@
-import fs from "fs-extra"
 import os from "node:os"
 import path from "node:path"
+import fs from "fs-extra"
 
 export const projectRoot = process.cwd()
 export const userHomeDir = os.homedir()

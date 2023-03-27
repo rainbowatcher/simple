@@ -1,9 +1,10 @@
-import client from "./client"
 import { useAxios } from "@vueuse/integrations/useAxios"
-import { DataSourceVO, DataSourceType } from "src/server/domain"
-import { Resp } from "src/server/utils/http"
-import { FormRules } from "naive-ui"
+import type { DataSourceVO, DataSourceType } from "src/server/domain"
+import type { Resp } from "src/server/utils/http"
+import type { FormRules } from "naive-ui"
 import validator from "validator"
+import { isString } from "@vueuse/core"
+import client from "./client"
 
 export const reqDataSources = () => {
   return useAxios<Resp<DataSourceVO[]>>("/", client)
@@ -23,7 +24,7 @@ export const reqDelDataSource = (type: DataSourceType, name: string) => {
         name,
       },
     },
-    client
+    client,
   )
 }
 
@@ -35,7 +36,7 @@ export const useDataSourceFormRules = (): FormRules => ({
   host: {
     required: true,
     trigger: "blur",
-    validator: (_, value) => validator.isIP(value) || validator.isFQDN(value),
+    validator: (_, value) => isString(value) && (validator.isIP(value) || validator.isFQDN(value)),
   },
   port: {
     required: true,

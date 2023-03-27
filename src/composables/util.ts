@@ -1,5 +1,5 @@
-import { MaybeRef } from "@vueuse/core"
-import { UnwrapRef } from "vue"
+import type { MaybeRef } from "@vueuse/core"
+import type { UnwrapRef } from "vue"
 import Fuse from "fuse.js"
 
 export const useState = <T>(state: T) => {
@@ -20,7 +20,7 @@ export interface SearchOptions<T> {
 
 export const useSearch = <T>(
   source: MaybeRef<T[] | undefined>,
-  options?: SearchOptions<T>
+  options?: SearchOptions<T>,
 ) => {
   const {
     strict = false,
@@ -42,7 +42,7 @@ export const useSearch = <T>(
           .includes(_keyword.toLocaleLowerCase())
       } else if (typeof item === "object") {
         // no implement
-        return searchObject(item as object)
+        return searchObject(item as Record<string, unknown>)
       } else if (typeof item === "symbol") {
         // no implement
         return false
@@ -51,7 +51,7 @@ export const useSearch = <T>(
     },
   } = options ?? {}
   const keyword = ref("")
-  const searchReturn = ref<T[]>() as Ref<T[] | undefined>
+  const searchReturn = ref<T[]>()
   const matchesReturn = ref<(readonly Fuse.FuseResultMatch[] | undefined)[]>()
 
   // search method for the click or keyboard event
@@ -88,8 +88,8 @@ export const useSearch = <T>(
       }).search(keyword.value)
 
       return {
-        result: fuseReturn.map((i) => i.item),
-        matches: fuseReturn.map((i) => i.matches),
+        result: fuseReturn.map(i => i.item),
+        matches: fuseReturn.map(i => i.matches),
       }
     }
     return {
@@ -97,14 +97,14 @@ export const useSearch = <T>(
     }
   }
 
-  function searchObject(obj: Object): boolean {
-    return Object.values(obj).find(filter)
+  function searchObject(obj: Record<string, unknown>): boolean {
+    return !!Object.values(obj).find(filter as (value: unknown, i: number, o: unknown[]) => boolean) || false
   }
 
   // when source changed, do search immediately
   watch(
     () => source,
-    () => search()
+    () => search(),
   )
 
   return {

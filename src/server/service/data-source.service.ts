@@ -1,18 +1,14 @@
-import * as fs from "fs-extra"
 import { readFile } from "node:fs/promises"
 import path from "node:path"
-import { createRegExp } from "magic-regexp"
+import * as fs from "fs-extra"
 import { createIfNotExists, getUserConfigDir } from "../utils/path"
 import useLogger from "../utils/logger"
-import { hostRE } from "../consts/regexp"
-import {
-  DataSourceDO,
+import type {
   DataSourceVO,
   DataSourceConfig,
   DataSourceType,
-  DataSourceSchema,
-  dataSourceVoValidator,
-} from "../domain"
+  DataSourceSchema } from "../domain"
+import { DataSourceDO, dataSourceVoValidator } from "../domain"
 import { Responses } from "../utils/http"
 
 export const ConfigFileName = "datasources.json"
@@ -45,16 +41,16 @@ export class DataSourceService {
 
     const dataSources = await this.getAll()
     const types = Object.keys(dataSources) as DataSourceType[]
-    for (let type of types) {
+    for (const type of types) {
       const configPair = dataSources[type]
       if (!configPair) continue
-      for (let name of Object.keys(configPair)) {
+      for (const name of Object.keys(configPair)) {
         const obj = configPair[name]
         vos.push({
           type,
           name,
           ...obj,
-          port: obj.port + "",
+          port: `${obj.port}`,
         })
       }
     }
@@ -68,22 +64,24 @@ export class DataSourceService {
     const configPath = this.configFilePath()
     const dataSources = await this.getAll()
     const dataSourceDO = DataSourceDO.fromVO(vo)
-    let resp = await this.validate(vo)
+    const resp = await this.validate(vo)
     if (resp) return resp
 
-    if (dataSources[vo.type]) {
-      if (dataSources[vo.type]![vo.name]) {
+    const { type, name } = vo
+    const dataSource = dataSources[type]
+    if (dataSource) {
+      if (dataSource[name]) {
         return Responses.CONFLICT.withMsg(
           "Datasource %s with type %s already exists",
           vo.name,
-          vo.type
+          vo.type,
         )
       } else {
-        dataSources[vo.type]![vo.name] = dataSourceDO
+        dataSource[name] = dataSourceDO
       }
     } else {
-      dataSources[vo.type] = {
-        [vo.name]: dataSourceDO,
+      dataSources[type] = {
+        [name]: dataSourceDO,
       }
     }
 
@@ -100,8 +98,8 @@ export class DataSourceService {
 
     const { type, name } = schema
     const datasources = await this.getAll()
-    if (datasources[type] && datasources[type]![name]) {
-      delete datasources[type]![name]
+    if (datasources[type]?.[name]) {
+      delete datasources[type]?.[name]
       const configPath = this.configFilePath()
       await fs.writeFile(configPath, JSON.stringify(datasources), "utf-8")
       return Responses.SUCCESS
@@ -112,19 +110,26 @@ export class DataSourceService {
 
   async update(vo?: DataSourceVO) {
     if (!vo) return Responses.MISSING_PARAM
-    let resp = await this.validate(vo)
+    const resp = await this.validate(vo)
     if (resp) return resp
 
     const all = await this.getAll()
-    if (all[vo.type]?.[vo.name]) {
-      all[vo.type]![vo.name] = DataSourceDO.fromVO(vo)
-      await fs.writeFile(this.configFilePath(), JSON.stringify(all), "utf-8")
+    const { type, name } = vo
+    const dataSource = all[type]
+    if (dataSource?.[name]) {
+      dataSource[name] = DataSourceDO.fromVO(vo)
+      try {
+        await fs.writeFile(this.configFilePath(), JSON.stringify(all), "utf-8")
+      } catch (error: unknown) {
+        logger.error("Config update fail")
+        throw error
+      }
       return Responses.SUCCESS
     } else {
       return Responses.NOT_FOUND.withMsg(
         "Type %s with name %s not found",
         vo.type,
-        vo.name
+        vo.name,
       )
     }
   }
@@ -143,7 +148,7 @@ export class DataSourceService {
       return Responses.INVALID_PARAM.withMsg(
         "%s at field '%s'",
         firstIssue.message,
-        firstIssue.path[0]
+        firstIssue.path[0],
       )
     }
   }
