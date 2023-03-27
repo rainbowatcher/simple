@@ -6,14 +6,18 @@ A selfhost server for simplify data works.
 
 comming soon
 
-## useage
+## Usage
 
 comming soon
 
-## roadmap
+## Roadmap
 
 - [ ] setting page
-- [ ] datasource management page
-- [ ] template editor page
+- [x] datasource management page
+- [ ] template management page
 - [ ] data work page
 - [ ] dashboard page
+
+## License
+
+[MIT](./LICENSE) &copy; Made by ❤️
