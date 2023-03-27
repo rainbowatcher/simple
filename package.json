@@ -1,6 +1,6 @@
 {
   "name": "simple",
-  "version": "0.0.0",
+  "version": "0.0.1-alpha.1",
   "private": true,
   "description": "simple your work.",
   "author": "rainbowatcher <rainbow-w@qq.com>",
@@ -17,6 +17,8 @@
     "?start": "run server in prod mode.",
     "build": "vite build",
     "?build": "build both frontend and backend code.",
+    "release": "bumpp",
+    "?release": "release package.",
     "up": "taze -I",
     "?up": "update dependencies."
   },
@@ -31,6 +33,7 @@
     "@vueuse/core": "^9.13.0",
     "@vueuse/integrations": "^9.13.0",
     "axios": "^1.3.4",
+    "bumpp": "^9.0.0",
     "consola": "^2.15.3",
     "cross-env": "^7.0.3",
     "eslint": "^8.36.0",
