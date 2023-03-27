@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": ["*.test.ts", "**/fixtures/**", "src/*.d.ts", "vite.config.ts.*"],
+  "execMap": {
+    "ts": "jiti"
+  },
+  "watch": [
+    "src/server/**/*.ts"
+  ],
+  "delay": 1500
+}

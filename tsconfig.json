@@ -1,21 +1,28 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "forceConsistentCasingInFileNames": true,
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "types": [
-      "vite/client"
-    ],
+    "lib": ["ESNext", "DOM"],
+    "types": ["vite/client", "naive-ui/volar"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true
-  }
+    "skipDefaultLibCheck": true,
+    "paths": {
+      "server/*": ["server/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "server/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "src/*.ext",
+    "vite.config.ts"
+  ]
 }

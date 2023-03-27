@@ -1,14 +1,30 @@
-<script lang="ts" setup>import { ref } from 'vue';
-
-
-const count = ref(0)
+<script lang="ts" setup>
+import { darkTheme } from "naive-ui"
+const dark = useDark()
+const theme = computed(() => (dark.value ? darkTheme : undefined))
 </script>
 
 <template>
-  This is App.vue
-  <button class="w-16 rounded" @click="count++">{{ count }}</button>
+  <NConfigProvider :theme="theme" abstract>
+    <NMessageProvider>
+      <NDialogProvider>
+        <!-- <NScrollbar> -->
+          <MainLayout>
+            <RouterView v-slot="{ Component }">
+              <template v-if="Component">
+                <!-- <KeepAlive> -->
+                  <Suspense>
+                    <component :is="Component" />
+                    <template #fallback> Loading... </template>
+                  </Suspense>
+                <!-- </KeepAlive> -->
+              </template>
+            </RouterView>
+          </MainLayout>
+        <!-- </NScrollbar> -->
+      </NDialogProvider>
+    </NMessageProvider>
+  </NConfigProvider>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

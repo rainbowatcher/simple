@@ -1,0 +1,14 @@
+{
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "vue-router"
+  ],
+  "code-runner.executorMap": {
+    "typescript": "jiti"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+}

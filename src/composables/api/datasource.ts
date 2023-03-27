@@ -1,0 +1,61 @@
+import client from "./client"
+import { useAxios } from "@vueuse/integrations/useAxios"
+import { DataSourceVO, DataSourceType } from "src/server/domain"
+import { Resp } from "src/server/utils/http"
+import { FormRules } from "naive-ui"
+import validator from "validator"
+
+export const reqDataSources = () => {
+  return useAxios<Resp<DataSourceVO[]>>("/", client)
+}
+
+export const reqAddDataSource = (data: DataSourceVO) => {
+  return useAxios<Resp<DataSourceVO>>("/add", { method: "POST", data }, client)
+}
+
+export const reqDelDataSource = (type: DataSourceType, name: string) => {
+  return useAxios<Resp>(
+    "/del",
+    {
+      method: "DELETE",
+      data: {
+        type,
+        name,
+      },
+    },
+    client
+  )
+}
+
+export const reqUpdate = (data: DataSourceVO) => {
+  return useAxios<Resp>("/update", { method: "POST", data }, client)
+}
+
+export const useDataSourceFormRules = (): FormRules => ({
+  host: {
+    required: true,
+    trigger: "blur",
+    validator: (_, value) => validator.isIP(value) || validator.isFQDN(value),
+  },
+  port: {
+    required: true,
+    trigger: "blur",
+    validator: (_, value) => {
+      if (!value) {
+        return new Error("port is required")
+      } else if (Number.isNaN(Number(value))) {
+        return new Error("Not a number")
+      } else if (Number(value) < 0) {
+        return new Error("Can't less than zero")
+      } else if (Number(value) > 65535) {
+        return new Error("Can't greater than 65535")
+      }
+      return true
+    },
+  },
+  name: { required: true, trigger: "blur" },
+  type: { required: true, trigger: "blur" },
+  user: { required: false },
+  password: { required: false },
+  database: { required: false },
+})

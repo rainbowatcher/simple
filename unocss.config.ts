@@ -3,12 +3,14 @@ import {
   presetUno,
   presetAttributify,
   presetIcons,
-} from 'unocss';
+} from "unocss"
+import { useAppConfig } from "./src/composables/config"
 
 export default defineConfig({
   presets: [
     presetUno(),
     presetAttributify(),
-    presetIcons()
-  ]
+    presetIcons(),
+  ],
+  safelist: [...useAppConfig().sideMenu.map(i => i.icon)],
 })
