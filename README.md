@@ -12,9 +12,10 @@ comming soon
 
 ## Roadmap
 
-- [ ] setting page
-- [x] datasource management page
-- [ ] template management page
+- [x] settings
+- [x] datasource management
+- [ ] template management
+- [ ] data type mapping management
 - [ ] data work page
 - [ ] dashboard page
 
