@@ -88,8 +88,8 @@ const { result, keyword, search } = useSearch<RowData>(voList, {
   fuzzy: true,
 })
 
-const addDataSource = async (rowData: DataSourceVO) => {
-  const { data } = await reqAddDataSource(rowData)
+const addDataSource = async (rowData: Ref<DataSourceVO>) => {
+  const { data } = await reqAddDataSource(rowData.value)
   const { message, status } = data.value!
   messager.create(message ?? "", { type: useType(status) })
   await refresh()
@@ -115,8 +115,8 @@ const editDataSource = async (rowData: RowData) => {
   toggleEditModal()
 }
 
-async function updateDataSource(rowData: DataSourceVO) {
-  const { data } = await reqUpdate(rowData)
+async function updateDataSource(rowData: Ref<DataSourceVO>) {
+  const { data } = await reqUpdate(rowData.value)
   const { status, message } = data.value!
   messager.create(message ?? "", { type: useType(status) })
   await refresh()
