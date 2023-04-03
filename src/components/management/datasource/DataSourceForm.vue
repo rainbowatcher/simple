@@ -7,7 +7,7 @@ import type {
 } from "src/server/domain"
 import {
   dataSourceTypes,
-dataSourceVoValidator,
+  dataSourceVoValidator,
 } from "src/server/domain"
 
 const props = defineProps<{
@@ -32,7 +32,7 @@ const defaultData: DataSourceVO = {
   name: "",
   type: "mysql",
   host: "",
-  port: "",
+  port: "3306",
   user: "",
   password: "",
   database: "",
@@ -71,7 +71,7 @@ const onSelect = (type: DataSourceType) => {
 }
 
 function isSubmitDisable() {
-  return dataSourceVoValidator.safeParse(data.value).success
+  return !dataSourceVoValidator.safeParse(data.value).success
 }
 </script>
 
