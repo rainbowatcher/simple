@@ -26,6 +26,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
+    "@iconify-json/carbon": "^1.1.16",
     "@iconify-json/mdi": "^1.1.50",
     "@rainbowatcher/eslint-config": "0.0.1-beta.15",
     "@types/fs-extra": "^11.0.1",
