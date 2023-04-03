@@ -13,7 +13,7 @@ import { MagicRegExpTransformPlugin } from "magic-regexp/transform"
 export default defineConfig({
   resolve: {
     alias: {
-      "src/server/": `${path.resolve(__dirname, "src/server")}/`,
+      "src/": `${path.resolve(__dirname, "src")}/`,
     },
   },
   plugins: [
