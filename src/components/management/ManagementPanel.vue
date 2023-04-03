@@ -3,8 +3,11 @@
 
 <template>
   <NTabs type="line" :bar-width="28" animated>
-    <NTabPane name="data" tab="DataSource manage" display-directive="show:lazy">
+    <NTabPane name="datasource" tab="DataSource manage" display-directive="show:lazy">
       <DataSourceManage />
+    </NTabPane>
+    <NTabPane name="template" tab="Template manage" display-directive="show:lazy">
+      <TemplateManage />
     </NTabPane>
   </NTabs>
 </template>

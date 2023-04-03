@@ -49,10 +49,12 @@ declare module '@vue/runtime-core' {
     NSwitch: typeof import('naive-ui')['NSwitch']
     NTabPane: typeof import('naive-ui')['NTabPane']
     NTabs: typeof import('naive-ui')['NTabs']
+    NTree: typeof import('naive-ui')['NTree']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SettingsPanel: typeof import('./components/settings/SettingsPanel.vue')['default']
     SideMenu: typeof import('./components/app/SideMenu.vue')['default']
+    TemplateManage: typeof import('./components/management/template/TemplateManage.vue')['default']
     UserConfigPanel: typeof import('./components/settings/UserConfigPanel.vue')['default']
   }
 }
