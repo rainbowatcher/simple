@@ -4,10 +4,10 @@
 
 <template>
   <NGradientText
-    @click="$router.push('/')"
     cursor-pointer
     size="24"
     type="success"
+    @click="$router.push('/')"
   >
     Simple
   </NGradientText>

@@ -1,9 +1,11 @@
 <script lang="ts" setup>
-import { FormValidationError } from "naive-ui/es/form/src/interface"
-import { SelectBaseOption } from "naive-ui/es/select/src/interface"
-import {
-  DataSourceVO,
+import type { FormValidationError } from "naive-ui/es/form/src/interface"
+import type { SelectBaseOption } from "naive-ui/es/select/src/interface"
+import type {
   DataSourceType,
+  DataSourceVO,
+} from "src/server/domain"
+import {
   dataSourceTypes,
 dataSourceVoValidator,
 } from "src/server/domain"
@@ -36,7 +38,7 @@ const defaultData: DataSourceVO = {
   database: "",
 }
 const data = ref<DataSourceVO>({ ...(props.model ?? defaultData) })
-const dbTypeOptions = dataSourceTypes.map<SelectBaseOption>((t) => ({
+const dbTypeOptions = dataSourceTypes.map<SelectBaseOption>(t => ({
   label: t,
   value: t,
 }))
@@ -63,7 +65,7 @@ const reset = () => {
 const onSelect = (type: DataSourceType) => {
   const port = defaultPorts[type]
   if (port) {
-    data.value.port = port + ""
+    data.value.port = `${port}`
   }
   data.value.type = type
 }
@@ -75,12 +77,12 @@ function isSubmitDisable() {
 
 <template>
   <NForm
+    ref="formRef"
+    v-model:model="data"
     label-placement="left"
     label-width="6rem"
     max-w-xl
     ma
-    ref="formRef"
-    v-model:model="data"
     :rules="rules"
   >
     <NFormItem label="Name" path="name">
@@ -98,8 +100,8 @@ function isSubmitDisable() {
     <NGrid :cols="24" :x-gap="12">
       <NFormItemGi :span="12" label="Type" path="type">
         <NSelect
-          filterable
           v-model:value="data.type"
+          filterable
           :options="dbTypeOptions"
           :on-update:value="onSelect"
           placeholder="Database Type"
@@ -108,8 +110,8 @@ function isSubmitDisable() {
 
       <NFormItemGi :span="12" path="port" label="Port">
         <NInput
+          v-model:value="data.port"
           placeholder="Port"
-          v-model:value="data.port as string"
           :allow-input="useAllowInteger"
         />
       </NFormItemGi>
@@ -130,11 +132,15 @@ function isSubmitDisable() {
     </NFormItem>
 
     <NSpace justify="end">
-      <NButton @click="$emit('closeModel')">Cancel</NButton>
-      <NButton attr-type="reset" @click="reset()">Restore</NButton>
-      <NButton :disabled="isSubmitDisable()" type="primary" @click="submit()"
-        >Submit</NButton
-      >
+      <NButton @click="$emit('closeModel')">
+        Cancel
+      </NButton>
+      <NButton attr-type="reset" @click="reset()">
+        Restore
+      </NButton>
+      <NButton :disabled="isSubmitDisable()" type="primary" @click="submit()">
+        Submit
+      </NButton>
     </NSpace>
   </NForm>
 </template>

@@ -38,15 +38,6 @@ export class DataSourceDO {
   }
 }
 
-// export interface DataSourceVO {
-//   type: DataSourceType
-//   name: string
-//   host: string
-//   port: string
-//   user?: string
-//   password?: string
-//   database?: string
-// }
 export const dataSourceVoValidator = z.object({
   type: z.enum(dataSourceTypes),
   name: z.string(),

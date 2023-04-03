@@ -9,10 +9,10 @@ const [collapsed, toggleCollapse] = useToggle(true)
     </NLayoutHeader>
     <NLayout has-sider>
       <NLayoutSider
-        showTrigger
+        show-trigger
         :collapsed="collapsed"
         :on-update:collapsed="toggleCollapse"
-        collapseMode="width"
+        collapse-mode="width"
         content-style="height: calc(100vh - calc(var(--h-header) + 1px))"
       >
         <SideMenu :collapsed="collapsed" />
@@ -21,10 +21,12 @@ const [collapsed, toggleCollapse] = useToggle(true)
         <NLayoutContent dark:bg-neutral-800 embedded>
           <div px4 py2>
             <NCard overflow-auto>
-              <slot name="default"></slot>
+              <slot name="default" />
             </NCard>
             <NDivider />
-            <div flex h-14 items-center justify-center>We do have footer.</div>
+            <div flex h-14 items-center justify-center>
+              We do have footer.
+            </div>
           </div>
         </NLayoutContent>
       </NLayout>

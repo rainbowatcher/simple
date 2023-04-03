@@ -6,7 +6,7 @@ const clazz = computed(() => isDark.value ? "i-mdi-weather-night" : "i-mdi-white
 <template>
   <n-switch v-model:value="isDark" size="medium">
     <template #icon>
-      <div :class="clazz"></div>
+      <div :class="clazz" />
     </template>
   </n-switch>
 </template>

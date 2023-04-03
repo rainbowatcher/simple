@@ -25,7 +25,8 @@ export const domainRE = letter
 export const hostRE = domainRE.or(ipv4AddrRE).as("host")
 export const portRE = digit.times.between(1, 5).as("port")
 export const dbRE = word.as("database")
-export const connectStringRE = hostRE.and(":").and(portRE).and("/").and(dbRE)
+export const connectStringRE = hostRE.and(":").and(portRE).and("/")
+  .and(dbRE)
 
 // (?:[a-zA-Z]|\d)(?:(?:\w|-){0,61}\w\.)+\w+
 // (?:[a-zA-Z]|\d)(?:(?:\w|-){0,61}\w\.)+(?:[a-zA-Z]){2,}

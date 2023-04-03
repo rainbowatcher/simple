@@ -4,9 +4,10 @@ import type { PathLike } from "node:fs"
 import { formatDate } from "@vueuse/core"
 import * as fs from "fs-extra"
 import type {
+  BasicReporterOptions,
   ConsolaReporterArgs,
   ConsolaReporterLogObject,
-  BasicReporterOptions } from "consola"
+} from "consola"
 import consola, {
   BasicReporter,
   FancyReporter,

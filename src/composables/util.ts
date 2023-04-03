@@ -18,15 +18,11 @@ export interface SearchOptions<T> {
   fuzzy?: boolean
 }
 
-export const useSearch = <T>(
-  source: MaybeRef<T[] | undefined>,
-  options?: SearchOptions<T>,
-) => {
+export const useSearch = <T>(source: MaybeRef<T[] | undefined>, options?: SearchOptions<T>) => {
   const {
     strict = false,
     fuzzy = false,
     filter = (item: T) => {
-      // debugger
       const _keyword = unref(keyword)
       const _strict = unref(strict)
       if (

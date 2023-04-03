@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { NButton, NButtonGroup } from "naive-ui"
-import {
+import type {
   RowData,
   TableColumn,
   TableColumns,
 } from "naive-ui/es/data-table/src/interface"
-import { DataSourceVO } from "src/server/domain"
+import type { DataSourceVO } from "src/server/domain"
 import { capitalize } from "vue"
 import DataSourceForm from "./DataSourceForm.vue"
 
@@ -22,7 +22,7 @@ watch(isFinished, () => {
   if (isFinished.value) {
     voList.value = dataSources.value?.data
     columns.value = Object.keys(dataSources.value?.data?.[0] ?? []).map(
-      (i) =>
+      i =>
         ({
           key: i,
           // filter: i === "type" ? "default" : false,
@@ -33,7 +33,7 @@ watch(isFinished, () => {
           //     : undefined,
           sorter: "default",
           title: capitalize(i),
-        } as TableColumn)
+        } as TableColumn),
     )
     columns.value.push({
       title: "Actions",
@@ -49,7 +49,7 @@ watch(isFinished, () => {
               size: "small",
               onClick: () => editDataSource(row),
             },
-            () => h("div", { class: "i-mdi-file-edit text-16px" })
+            () => h("div", { class: "i-mdi-file-edit text-16px" }),
           ),
           h(
             NButton,
@@ -59,7 +59,7 @@ watch(isFinished, () => {
               type: "error",
               onClick: () => deleteDataSource(row),
             },
-            () => h("div", { class: "i-mdi-delete text-18px" })
+            () => h("div", { class: "i-mdi-delete text-18px" }),
           ),
         ]),
     })
@@ -124,13 +124,10 @@ async function updateDataSource(rowData: DataSourceVO) {
 </script>
 
 <template>
-  <!-- <Suspense>
-            <template #fallback></template>
-          </Suspense> -->
   <NSpace justify="end" mb-2>
     <NInput
-      placeholder="Fuzzy Search"
       v-model:value="keyword"
+      placeholder="Fuzzy Search"
       @keydown="search"
     >
       <template #suffix>

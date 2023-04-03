@@ -4,9 +4,9 @@ import useLogger from "./logger"
 
 const logger = useLogger("http")
 
-export type Resp<T = any> = Omit<BaseResp<T>, "send" | "withMsg">
+export type Resp<T = unknown> = Omit<BaseResp<T>, "send" | "withMsg">
 
-class BaseResp<T = any> {
+class BaseResp<T = unknown> {
   public message: string
   public data?: T
   public status: number
@@ -55,7 +55,7 @@ export async function parseRequest<T = undefined>(e: h3.H3Event) {
   }
 }
 
-export const Responses = {
+export const responses = {
   SUCCESS: new BaseResp("Success", 10000),
   MISSING_PARAM: new BaseResp("Missing request param", 10001),
   INVALID_PARAM: new BaseResp("Invalid request param", 10001),

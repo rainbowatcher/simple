@@ -4,12 +4,12 @@ import { parseRequest } from "../utils/http"
 import { DataSourceService } from "../service"
 import type { DataSourceSchema, DataSourceVO } from "../domain"
 
-const API_PATH = "/api/datasources"
+const apiPath = "/api/datasources"
 const dataSourceService = new DataSourceService()
 
-export function DataSourceController(router: Router) {
+export function dataSourceController(router: Router) {
   router.get(
-    API_PATH,
+    apiPath,
     eventHandler(async (e) => {
       await parseRequest(e)
       return await (await dataSourceService.getVOList()).send(e)
@@ -17,7 +17,7 @@ export function DataSourceController(router: Router) {
   )
 
   router.post(
-    `${API_PATH}/add`,
+    `${apiPath}/add`,
     eventHandler(async (e) => {
       const { body } = await parseRequest(e)
       return await (await dataSourceService.add(body)).send(e)
@@ -25,7 +25,7 @@ export function DataSourceController(router: Router) {
   )
 
   router.delete(
-    `${API_PATH}/del`,
+    `${apiPath}/del`,
     eventHandler(async (e) => {
       const { body } = await parseRequest<DataSourceSchema>(e)
       return await (await dataSourceService.del(body)).send(e)
@@ -33,7 +33,7 @@ export function DataSourceController(router: Router) {
   )
 
   router.post(
-    `${API_PATH}/update`,
+    `${apiPath}/update`,
     eventHandler(async (e) => {
       const { body } = await parseRequest<DataSourceVO>(e)
       return await (await dataSourceService.update(body)).send(e)

@@ -1,5 +1,5 @@
 import { useAxios } from "@vueuse/integrations/useAxios"
-import type { DataSourceVO, DataSourceType } from "src/server/domain"
+import type { DataSourceType, DataSourceVO } from "src/server/domain"
 import type { Resp } from "src/server/utils/http"
 import type { FormRules } from "naive-ui"
 import validator from "validator"

@@ -1,8 +1,8 @@
 import {
   defineConfig,
-  presetUno,
   presetAttributify,
   presetIcons,
+  presetUno,
 } from "unocss"
 import { useAppConfig } from "./src/composables/config"
 

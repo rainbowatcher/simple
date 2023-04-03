@@ -3,7 +3,7 @@
 </script>
 
 <template>
-dev
+  dev
 </template>
 
 <style scoped>

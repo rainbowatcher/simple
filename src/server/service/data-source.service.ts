@@ -4,20 +4,21 @@ import * as fs from "fs-extra"
 import { createIfNotExists, getUserConfigDir } from "../utils/path"
 import useLogger from "../utils/logger"
 import type {
-  DataSourceVO,
   DataSourceConfig,
+  DataSourceSchema,
   DataSourceType,
-  DataSourceSchema } from "../domain"
+  DataSourceVO,
+} from "../domain"
 import { DataSourceDO, dataSourceVoValidator } from "../domain"
-import { Responses } from "../utils/http"
+import { responses } from "../utils/http"
 
-export const ConfigFileName = "datasources.json"
+const configFileName = "datasources.json"
 const logger = useLogger("datasources:service")
 
 export class DataSourceService {
   configFilePath() {
     const configDir = getUserConfigDir()
-    return path.resolve(configDir, ConfigFileName)
+    return path.resolve(configDir, configFileName)
   }
 
   async getAll() {
@@ -55,11 +56,11 @@ export class DataSourceService {
       }
     }
 
-    return Responses.SUCCESS.withData(vos)
+    return responses.SUCCESS.withData(vos)
   }
 
   async add(vo?: DataSourceVO) {
-    if (!vo) return Responses.MISSING_PARAM
+    if (!vo) return responses.MISSING_PARAM
 
     const configPath = this.configFilePath()
     const dataSources = await this.getAll()
@@ -71,7 +72,7 @@ export class DataSourceService {
     const dataSource = dataSources[type]
     if (dataSource) {
       if (dataSource[name]) {
-        return Responses.CONFLICT.withMsg(
+        return responses.CONFLICT.withMsg(
           "Datasource %s with type %s already exists",
           vo.name,
           vo.type,
@@ -87,13 +88,13 @@ export class DataSourceService {
 
     logger.info("write config to path `%s`", configPath)
     await fs.writeFile(configPath, JSON.stringify(dataSources), "utf-8")
-    return Responses.SUCCESS
+    return responses.SUCCESS
   }
 
   async del(schema?: DataSourceSchema) {
     const isValid = schema && schema.name && schema.type
     if (!isValid) {
-      return Responses.MISSING_PARAM
+      return responses.MISSING_PARAM
     }
 
     const { type, name } = schema
@@ -102,14 +103,14 @@ export class DataSourceService {
       delete datasources[type]?.[name]
       const configPath = this.configFilePath()
       await fs.writeFile(configPath, JSON.stringify(datasources), "utf-8")
-      return Responses.SUCCESS
+      return responses.SUCCESS
     } else {
-      return Responses.NOT_FOUND.withMsg("DataSource %s not exists", name)
+      return responses.NOT_FOUND.withMsg("DataSource %s not exists", name)
     }
   }
 
   async update(vo?: DataSourceVO) {
-    if (!vo) return Responses.MISSING_PARAM
+    if (!vo) return responses.MISSING_PARAM
     const resp = await this.validate(vo)
     if (resp) return resp
 
@@ -124,9 +125,9 @@ export class DataSourceService {
         logger.error("Config update fail")
         throw error
       }
-      return Responses.SUCCESS
+      return responses.SUCCESS
     } else {
-      return Responses.NOT_FOUND.withMsg(
+      return responses.NOT_FOUND.withMsg(
         "Type %s with name %s not found",
         vo.type,
         vo.name,
@@ -145,7 +146,7 @@ export class DataSourceService {
     const result = await dataSourceVoValidator.safeParseAsync(vo)
     if (!result.success) {
       const firstIssue = result.error.issues[0]
-      return Responses.INVALID_PARAM.withMsg(
+      return responses.INVALID_PARAM.withMsg(
         "%s at field '%s'",
         firstIssue.message,
         firstIssue.path[0],

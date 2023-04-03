@@ -2,7 +2,7 @@
 </script>
 
 <template>
-dash
+  dash
 </template>
 
 <style scoped>
