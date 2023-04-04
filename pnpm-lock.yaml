@@ -6,6 +6,7 @@ specifiers:
   '@iconify-json/carbon': ^1.1.16
   '@iconify-json/mdi': ^1.1.50
   '@rainbowatcher/eslint-config': 0.0.1-beta.15
+  '@total-typescript/ts-reset': ^0.4.2
   '@types/fs-extra': ^11.0.1
   '@types/node': ^18.15.11
   '@types/validator': ^13.7.14
@@ -52,6 +53,7 @@ devDependencies:
   '@iconify-json/carbon': 1.1.16
   '@iconify-json/mdi': 1.1.50
   '@rainbowatcher/eslint-config': 0.0.1-beta.15_vwh6htx42aidho2qgfca5u5rwm
+  '@total-typescript/ts-reset': 0.4.2
   '@types/fs-extra': 11.0.1
   '@types/node': 18.15.11
   '@types/validator': 13.7.14
@@ -912,6 +914,10 @@ packages:
   /@tootallnate/once/2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
+    dev: true
+
+  /@total-typescript/ts-reset/0.4.2:
+    resolution: {integrity: sha512-vqd7ZUDSrXFVT1n8b2kc3LnklncDQFPvR58yUS1kEP23/nHPAO9l1lMjUfnPrXYYk4Hj54rrLKMW5ipwk7k09A==}
     dev: true
 
   /@tsconfig/node10/1.0.9:

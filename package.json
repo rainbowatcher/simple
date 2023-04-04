@@ -29,6 +29,7 @@
     "@iconify-json/carbon": "^1.1.16",
     "@iconify-json/mdi": "^1.1.50",
     "@rainbowatcher/eslint-config": "0.0.1-beta.15",
+    "@total-typescript/ts-reset": "^0.4.2",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.11",
     "@types/validator": "^13.7.14",
