@@ -55,10 +55,20 @@ export async function parseRequest<T = undefined>(e: h3.H3Event) {
   }
 }
 
-export const responses = {
-  SUCCESS: new BaseResp("Success", 10000),
-  MISSING_PARAM: new BaseResp("Missing request param", 10001),
-  INVALID_PARAM: new BaseResp("Invalid request param", 10001),
-  NOT_FOUND: new BaseResp("Resource not found", 10004),
-  CONFLICT: new BaseResp("Resource already exists", 10005),
+export function responses<T = unknown>() {
+  const SUCCESS = new BaseResp<T>("Success", 10000)
+  const MISSING_PARAM = new BaseResp<T>("Missing request param", 10001)
+  const INVALID_PARAM = new BaseResp<T>("Invalid request param", 10002)
+  const NOT_FOUND = new BaseResp<T>("Resource not found", 10004)
+  const CONFLICT = new BaseResp<T>("Resource already exists", 10005)
+  const IO_ERROR = new BaseResp<T>("Resource already exists", 11005)
+
+  return {
+    SUCCESS,
+    MISSING_PARAM,
+    INVALID_PARAM,
+    NOT_FOUND,
+    CONFLICT,
+    IO_ERROR,
+  }
 }

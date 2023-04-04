@@ -7,16 +7,16 @@ import { isString } from "@vueuse/core"
 import client from "./client"
 
 export const reqDataSources = () => {
-  return useAxios<Resp<DataSourceVO[]>>("/", client)
+  return useAxios<Resp<DataSourceVO[]>>("/datasources/", client)
 }
 
 export const reqAddDataSource = (data: DataSourceVO) => {
-  return useAxios<Resp<DataSourceVO>>("/add", { method: "POST", data }, client)
+  return useAxios<Resp<DataSourceVO>>("/datasources/add", { method: "POST", data }, client)
 }
 
 export const reqDelDataSource = (type: DataSourceType, name: string) => {
   return useAxios<Resp>(
-    "/del",
+    "/datasources/del",
     {
       method: "DELETE",
       data: {
@@ -29,7 +29,7 @@ export const reqDelDataSource = (type: DataSourceType, name: string) => {
 }
 
 export const reqUpdate = (data: DataSourceVO) => {
-  return useAxios<Resp>("/update", { method: "POST", data }, client)
+  return useAxios<Resp>("/datasources/update", { method: "POST", data }, client)
 }
 
 export const useDataSourceFormRules = (): FormRules => ({

@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises"
 import path from "node:path"
 import * as fs from "fs-extra"
-import { createIfNotExists, getUserConfigDir } from "../utils/path"
+import { createFileIfNotExists, getUserConfigDir } from "../utils/path"
 import useLogger from "../utils/logger"
 import type {
   DataSourceConfig,
@@ -12,19 +12,20 @@ import type {
 import { DataSourceDO, dataSourceVoValidator } from "../domain"
 import { responses } from "../utils/http"
 
-const configFileName = "datasources.json"
 const logger = useLogger("datasources:service")
 
 export class DataSourceService {
+  static readonly configFileName = "datasources.json"
+
   configFilePath() {
-    const configDir = getUserConfigDir()
-    return path.resolve(configDir, configFileName)
+    const configPath = getUserConfigDir()
+    return path.resolve(configPath, DataSourceService.configFileName)
   }
 
   async getAll() {
     const configPath = this.configFilePath()
     let config: DataSourceConfig = {}
-    await createIfNotExists(configPath, "{}")
+    await createFileIfNotExists(configPath, "{}")
 
     try {
       const configFile = await readFile(configPath, { encoding: "utf-8" })
@@ -38,6 +39,7 @@ export class DataSourceService {
   }
 
   async getVOList() {
+    const { SUCCESS } = responses<DataSourceVO[]>()
     const vos: DataSourceVO[] = []
 
     const dataSources = await this.getAll()
@@ -56,11 +58,12 @@ export class DataSourceService {
       }
     }
 
-    return responses.SUCCESS.withData(vos)
+    return SUCCESS.withData(vos)
   }
 
   async add(vo?: DataSourceVO) {
-    if (!vo) return responses.MISSING_PARAM
+    const { MISSING_PARAM, CONFLICT, SUCCESS } = responses()
+    if (!vo) return MISSING_PARAM
 
     const configPath = this.configFilePath()
     const dataSources = await this.getAll()
@@ -72,11 +75,7 @@ export class DataSourceService {
     const dataSource = dataSources[type]
     if (dataSource) {
       if (dataSource[name]) {
-        return responses.CONFLICT.withMsg(
-          "Datasource %s with type %s already exists",
-          vo.name,
-          vo.type,
-        )
+        return CONFLICT.withMsg("Datasource %s with type %s already exists", name, type)
       } else {
         dataSource[name] = dataSourceDO
       }
@@ -88,13 +87,14 @@ export class DataSourceService {
 
     logger.info("write config to path `%s`", configPath)
     await fs.writeFile(configPath, JSON.stringify(dataSources), "utf-8")
-    return responses.SUCCESS
+    return SUCCESS
   }
 
   async del(schema?: DataSourceSchema) {
+    const { MISSING_PARAM, NOT_FOUND, SUCCESS } = responses()
     const isValid = schema && schema.name && schema.type
     if (!isValid) {
-      return responses.MISSING_PARAM
+      return MISSING_PARAM
     }
 
     const { type, name } = schema
@@ -103,14 +103,15 @@ export class DataSourceService {
       delete datasources[type]?.[name]
       const configPath = this.configFilePath()
       await fs.writeFile(configPath, JSON.stringify(datasources), "utf-8")
-      return responses.SUCCESS
+      return SUCCESS
     } else {
-      return responses.NOT_FOUND.withMsg("DataSource %s not exists", name)
+      return NOT_FOUND.withMsg("DataSource %s not exists", name)
     }
   }
 
   async update(vo?: DataSourceVO) {
-    if (!vo) return responses.MISSING_PARAM
+    const { MISSING_PARAM, SUCCESS, NOT_FOUND } = responses()
+    if (!vo) return MISSING_PARAM
     const resp = await this.validate(vo)
     if (resp) return resp
 
@@ -125,13 +126,9 @@ export class DataSourceService {
         logger.error("Config update fail")
         throw error
       }
-      return responses.SUCCESS
+      return SUCCESS
     } else {
-      return responses.NOT_FOUND.withMsg(
-        "Type %s with name %s not found",
-        vo.type,
-        vo.name,
-      )
+      return NOT_FOUND.withMsg("Type %s with name %s not found", type, name)
     }
   }
 
@@ -146,7 +143,7 @@ export class DataSourceService {
     const result = await dataSourceVoValidator.safeParseAsync(vo)
     if (!result.success) {
       const firstIssue = result.error.issues[0]
-      return responses.INVALID_PARAM.withMsg(
+      return responses().INVALID_PARAM.withMsg(
         "%s at field '%s'",
         firstIssue.message,
         firstIssue.path[0],
