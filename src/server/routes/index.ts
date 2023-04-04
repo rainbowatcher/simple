@@ -8,7 +8,7 @@ router.use(
   "/api/**",
   eventHandler(async (e) => {
     await parseRequest(e)
-    await responses.NOT_FOUND.send(e)
+    await responses().NOT_FOUND.send(e)
   }),
 )
 

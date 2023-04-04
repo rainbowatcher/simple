@@ -1,21 +1,20 @@
-export interface TableInfo {
+export type TableInfo = {
   catalog: string
   schema: string
   comment: string
 }
 
-export interface FieldInfo {
+export type FieldInfo = {
   name: string
   type: DataType
   comment?: string
   isPrimary?: boolean
 }
 
-export interface DataType {
+export type DataType = {
   name: string
   maxLength: number
   numericPrecision?: number
   numericScale?: number
   unsigned?: boolean
 }
-// #endregion

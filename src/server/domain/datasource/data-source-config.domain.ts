@@ -1,16 +1,16 @@
 import { z } from "zod"
 import validator from "validator"
 
-export const dataSourceTypes = <const>[
+export const dataSourceTypes = [
   "hive",
   "mysql",
   "mssql",
   "oracle",
   "clickhouse",
   "elasticSearch",
-]
+] as const
 export type DataSourceType = typeof dataSourceTypes[number]
-export interface DataSourceSchema {
+export type DataSourceSchema = {
   name: string
   type: DataSourceType
 }
@@ -19,14 +19,6 @@ export type DataSourceConfig = {
 }
 
 export class DataSourceDO {
-  constructor(
-    public host: string,
-    public port: number | string,
-    public user?: string,
-    public password?: string,
-    public database?: string,
-  ) {}
-
   static fromVO(vo: DataSourceVO) {
     return new DataSourceDO(
       vo.host,
@@ -36,6 +28,15 @@ export class DataSourceDO {
       vo.database,
     )
   }
+
+  constructor(
+    public host: string,
+    public port: number | string,
+    public user?: string,
+    public password?: string,
+    public database?: string,
+  ) {}
+
 }
 
 export const dataSourceVoValidator = z.object({

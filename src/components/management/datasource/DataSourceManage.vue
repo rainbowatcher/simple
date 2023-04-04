@@ -21,7 +21,7 @@ const voList = ref<DataSourceVO[]>()
 watch(isFinished, () => {
   if (isFinished.value) {
     voList.value = dataSources.value?.data
-    columns.value = Object.keys(dataSources.value?.data?.[0] ?? []).map(
+    columns.value = Object.keys(dataSources.value?.data?.[0] ?? []).map<TableColumn>(
       i =>
         ({
           key: i,
@@ -33,7 +33,7 @@ watch(isFinished, () => {
           //     : undefined,
           sorter: "default",
           title: capitalize(i),
-        } as TableColumn),
+        }),
     )
     columns.value.push({
       title: "Actions",

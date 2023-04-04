@@ -4,7 +4,7 @@ import fs from "fs-extra"
 
 export const projectRoot = process.cwd()
 export const userHomeDir = os.homedir()
-export const platform: NodeJS.Platform = os.platform()
+export const platform = os.platform()
 export const projectName = "Simple"
 
 export const linuxConfigDir = `${userHomeDir}/.config`
@@ -51,10 +51,26 @@ export const getLogDir = () => {
   return path.resolve(dataDir, "log")
 }
 
-export async function createIfNotExists(configFilePath: string, initContent?: string) {
-  const fileExists = await fs.exists(configFilePath)
-  if (!fileExists) {
-    await fs.createFile(configFilePath)
-    if (initContent) await fs.writeFile(configFilePath, initContent)
+export async function createFileIfNotExists(filePath: string, initContent?: string) {
+  try {
+    const p = await fs.exists(filePath)
+    if (!p) {
+      await fs.createFile(filePath)
+      if (initContent)
+        await fs.writeFile(filePath, initContent)
+    }
+  } catch (e) {
+    return console.log(e)
+  }
+}
+
+export async function createDirIfNotExists(filePath: string) {
+  try {
+    const p = await fs.exists(filePath)
+    if (!p) {
+      await fs.mkdir(filePath)
+    }
+  } catch (e) {
+    return console.log(e)
   }
 }

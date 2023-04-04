@@ -16,9 +16,9 @@ import consola, {
 import mri from "mri"
 import { getLogDir, projectName } from "../utils/path"
 
-interface FileReporterOptions extends BasicReporterOptions {
+type FileReporterOptions = {
   path: PathLike
-}
+} & BasicReporterOptions
 
 class FileReporter extends BasicReporter {
   path: PathLike

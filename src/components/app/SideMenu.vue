@@ -7,13 +7,13 @@ defineProps<{
 const route = useRoute()
 const router = useRouter()
 const { sideMenu } = useAppConfig()
-const menuOptions = sideMenu.map((i) => {
+const menuOptions = sideMenu.map((i): MenuOption => {
   return {
     key: i.key,
     label: i.label,
     link: i.link,
     icon: () => h("i", { class: i.icon }),
-  } as MenuOption
+  }
 })
 const active = ref<string | number>()
 const routeTo = (e: string | number) => {
