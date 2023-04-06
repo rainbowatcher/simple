@@ -71,6 +71,6 @@ export async function createDirIfNotExists(filePath: string) {
       await fs.mkdir(filePath)
     }
   } catch (e) {
-    return console.log(e)
+    console.log(e)
   }
 }
