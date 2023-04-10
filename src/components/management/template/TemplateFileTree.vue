@@ -46,7 +46,6 @@ const nodeProps = ({ option }: { option: TreeOption }) => {
   <NTree
     v-model:data="data"
     block-line
-    draggable
     keyboard
     :animated="false"
     expand-on-click

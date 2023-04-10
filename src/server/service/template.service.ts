@@ -1,7 +1,7 @@
 import { resolve } from "node:path"
 import { readFile } from "node:fs/promises"
 import { url } from "node:inspector"
-import { exists, mkdir, move, pathExists, rm, writeFile } from "fs-extra"
+import { ensureDir, exists, mkdir, move, pathExists, rm, writeFile } from "fs-extra"
 import { globby } from "globby"
 import { createDirIfNotExists, getUserConfigDir } from "../utils/path"
 import { responses } from "../utils/http"
@@ -104,7 +104,9 @@ export class TemplateService {
     const filePath = resolve(dir, path)
     if (!await exists(filePath)) return NOT_FOUND
     if (physics) {
-      await rm(filePath)
+      ensureDir(filePath)
+        .then(async () => await rm(filePath, { recursive: true }))
+        .catch(() => rm(filePath))
     } else {
       await move(filePath, resolve(trashDir, path))
     }

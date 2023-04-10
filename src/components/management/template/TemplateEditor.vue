@@ -7,6 +7,7 @@ const props = withDefaults(defineProps<{
 const container = ref<HTMLDivElement>()
 const editorWrapper = ref()
 const isDark = useDark()
+const { messager } = useDiscreteApi()
 const theme = computed(() => isDark.value ? "vs-dark" : "vs")
 const { instance, resize } = useMonacoEditor(container, {
   theme: theme.value,
@@ -24,7 +25,9 @@ const save = () => {
   const content = instance.value?.getValue()
   const path = props.title
   if (path) {
-    saveTemplate(path, content, true)
+    saveTemplate(path, content, true).then((res) => {
+      if (res.data.value?.status === 10000) messager.success("Success")
+    })
   }
 }
 </script>
