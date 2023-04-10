@@ -92,15 +92,11 @@ export const useTemplateTree = () => {
     list()
   }
 
-  async function trashFile(key?: string) {
-    if (!key) return
-    // for (const key of keys) {
-    //   const name = data.value?.[key].value as string
-    //   trashTemplate(name.slice(0, name.length - 4))
-    // }
-    trashTemplate(key, true)
-    setTimeout(() => {
+  async function trashFile(path?: string) {
+    if (!path) return
+    trashTemplate(path, !!path.startsWith("trash/")).then(() => {
       list()
+      useDiscreteApi().messager.success("Success")
     })
   }
 

@@ -35,8 +35,8 @@ function templateController(router: Router) {
   router.delete(
     `${apiPath}/trash`, eventHandler(async (e) => {
       await parseRequest(e)
-      const { body } = await parseRequest<{name:string}>(e)
-      const res = await templateService.trash(body?.name)
+      const { body } = await parseRequest<{name:string; physics:boolean}>(e)
+      const res = await templateService.trash(body?.name, body?.physics)
       return res.send(e)
     }),
   )
