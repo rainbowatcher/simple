@@ -18,9 +18,18 @@ body,
 }
 
 html {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 html.dark {
   background-color: #171717;
+}
+
+.virtual-item {
+  background-color: #065f4680;
+  outline: 1px solid #a1a1a160;
+  border-radius: .1rem;
+  width: auto;
+  min-width: 330px;
+  height: auto;
 }

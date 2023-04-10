@@ -1,24 +1,23 @@
 <script lang="ts" setup>
-const templates = useTemplates()
-const data = ref([{
-  key: "文件夹",
-  label: "文件夹",
-  prefix: () =>
-    h("div", { class: "i-carbon-folder" }),
-}])
-const nodeProps = {
-  option: {},
+const editorContent = ref<string>()
+const title = ref("title")
+const update = (path: string, template: string) => {
+  title.value = path
+  editorContent.value = template
 }
 </script>
 
 <template>
-  <NTree
-    block-line
-    expand-on-click
-    :data="data"
-  />
+  <div class="template-manage-panel" flex="~ row gap-4">
+    <div class="template-manage-tree" flex-none min-w-48 h-auto>
+      <TemplateFileTree @update-editor="update" />
+    </div>
+    <TemplateEditor :title="title" :content="editorContent" />
+  </div>
 </template>
 
 <style scoped>
-
+.template-manage-tree:hover .template-tree-header-extra {
+  opacity: 1;
+}
 </style>

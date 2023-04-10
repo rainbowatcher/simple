@@ -32,6 +32,7 @@ export default defineConfig({
             "useMessage",
             "useNotification",
             "useLoadingBar",
+            "createDiscreteApi",
           ],
         },
       ],

@@ -1,6 +1,5 @@
-import { readFile } from "node:fs/promises"
 import path from "node:path"
-import * as fs from "fs-extra"
+import fs from "node:fs/promises"
 import { createFileIfNotExists, getUserConfigDir } from "../utils/path"
 import useLogger from "../utils/logger"
 import type {
@@ -28,7 +27,7 @@ export class DataSourceService {
     await createFileIfNotExists(configPath, "{}")
 
     try {
-      const configFile = await readFile(configPath, { encoding: "utf-8" })
+      const configFile = await fs.readFile(configPath, { encoding: "utf-8" })
       config = JSON.parse(configFile) as DataSourceConfig
     } catch (error) {
       logger.error("DataSource config is invalid")
@@ -86,7 +85,7 @@ export class DataSourceService {
     }
 
     logger.info("write config to path `%s`", configPath)
-    await fs.writeFile(configPath, JSON.stringify(dataSources), "utf-8")
+    await fs.writeFile(configPath, JSON.stringify(dataSources, null, 2), "utf-8")
     return SUCCESS
   }
 
@@ -102,7 +101,7 @@ export class DataSourceService {
     if (datasources[type]?.[name]) {
       delete datasources[type]?.[name]
       const configPath = this.configFilePath()
-      await fs.writeFile(configPath, JSON.stringify(datasources), "utf-8")
+      await fs.writeFile(configPath, JSON.stringify(datasources, null, 2), "utf-8")
       return SUCCESS
     } else {
       return NOT_FOUND.withMsg("DataSource %s not exists", name)
@@ -121,7 +120,7 @@ export class DataSourceService {
     if (dataSource?.[name]) {
       dataSource[name] = DataSourceDO.fromVO(vo)
       try {
-        await fs.writeFile(this.configFilePath(), JSON.stringify(all), "utf-8")
+        await fs.writeFile(this.configFilePath(), JSON.stringify(all, null, 2), "utf-8")
       } catch (error: unknown) {
         logger.error("Config update fail")
         throw error

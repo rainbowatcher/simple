@@ -61,7 +61,7 @@ export function responses<T = unknown>() {
   const INVALID_PARAM = new BaseResp<T>("Invalid request param", 10002)
   const NOT_FOUND = new BaseResp<T>("Resource not found", 10004)
   const CONFLICT = new BaseResp<T>("Resource already exists", 10005)
-  const IO_ERROR = new BaseResp<T>("Resource already exists", 11005)
+  const IO_ERROR = new BaseResp<T>("IO Error", 11005)
 
   return {
     SUCCESS,

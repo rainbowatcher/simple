@@ -12,7 +12,7 @@ export const useState = <T>(state: T) => {
   return [_state, setState] as const
 }
 
-export interface SearchOptions<T> {
+export type SearchOptions<T> = {
   filter?: (item: T) => boolean
   strict?: MaybeRef<boolean>
   fuzzy?: boolean
@@ -48,7 +48,7 @@ export const useSearch = <T>(source: MaybeRef<T[] | undefined>, options?: Search
   } = options ?? {}
   const keyword = ref("")
   const searchReturn = ref<T[]>()
-  const matchesReturn = ref<(readonly Fuse.FuseResultMatch[] | undefined)[]>()
+  const matchesReturn = ref<Array<readonly Fuse.FuseResultMatch[] | undefined>>()
 
   // search method for the click or keyboard event
   function search(e?: KeyboardEvent | Event) {

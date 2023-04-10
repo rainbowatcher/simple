@@ -7,7 +7,7 @@ import { isString } from "@vueuse/core"
 import client from "./client"
 
 export const reqDataSources = () => {
-  return useAxios<Resp<DataSourceVO[]>>("/datasources/", client)
+  return useAxios<Resp<DataSourceVO[]>>("/datasources", client)
 }
 
 export const reqAddDataSource = (data: DataSourceVO) => {

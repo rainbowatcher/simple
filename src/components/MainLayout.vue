@@ -17,7 +17,7 @@ const [collapsed, toggleCollapse] = useToggle(true)
       >
         <SideMenu :collapsed="collapsed" />
       </NLayoutSider>
-      <NLayout bordered>
+      <NLayout bordered content-style="height: calc(100vh - calc(var(--h-header) + 1px))">
         <NLayoutContent dark:bg-neutral-800 embedded>
           <div px4 py2>
             <NCard overflow-auto>
