@@ -1,1 +1,6 @@
 * text=auto eol=lf
+*.html -linguist-detectable
+*.ts linguist-vendored=false
+*.vue linguist-vendored=false
+*.css linguist-vendored=false
+* linguist-vendored
