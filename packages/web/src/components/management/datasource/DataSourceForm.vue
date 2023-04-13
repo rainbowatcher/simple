@@ -4,11 +4,11 @@ import type { SelectBaseOption } from "naive-ui/es/select/src/interface"
 import type {
   DataSourceType,
   DataSourceVO,
-} from "src/server/domain"
+} from "server/domain"
 import {
   dataSourceTypes,
   dataSourceVoValidator,
-} from "src/server/domain"
+} from "server/domain"
 
 const props = defineProps<{
   model?: DataSourceVO

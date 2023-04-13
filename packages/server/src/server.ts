@@ -1,5 +1,6 @@
 import { createServer } from "node:http"
 import fs from "node:fs"
+import path from "node:path"
 import * as h3 from "h3"
 import * as vite from "vite"
 import sirv from "sirv"
@@ -17,8 +18,7 @@ const server = createServer(listener)
 if (isDev) {
   logger.info("Start in development mode")
   vite.createServer({
-    // looks like it is unnecessary. because the default root is process.cwd().
-    // root: projectRoot,
+    root: "../web",
     server: {
       middlewareMode: true,
     },
@@ -28,8 +28,8 @@ if (isDev) {
       logger.info("Detect server close, close vite server")
       viteServer.close().catch(() => logger.error("Vite server stop failed"))
     })
-    // if frontend router did not match,then fallback to backend router
-    router.get("/**", h3.fromNodeMiddleware(viteServer.middlewares))
+    // if frontend router did not match, then fallback to backend router
+    app.use(h3.fromNodeMiddleware(viteServer.middlewares))
   }).catch(() => {
     logger.error("Vite server start failed")
   })
@@ -45,7 +45,6 @@ if (isDev) {
     app.use(
       h3.fromNodeMiddleware(
         sirv(config.build?.outDir, {
-          // newbee
           single: true,
         }),
       ),

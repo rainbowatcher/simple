@@ -61,5 +61,5 @@ const data = ref("")
     placeholder="Select templates"
     :options="options"
   />
-  <AsyncEditor v-model:value="data" language="json" />
+  <Editor v-model:value="data" language="json" />
 </template>

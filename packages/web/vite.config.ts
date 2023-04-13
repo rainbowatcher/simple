@@ -4,28 +4,23 @@ import Vue from "@vitejs/plugin-vue"
 import unocss from "unocss/vite"
 import AutoImport from "unplugin-auto-import/vite"
 import VueComponent from "unplugin-vue-components/vite"
-import { VueRouterAutoImports } from "unplugin-vue-router"
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers"
-import VueRouter from "unplugin-vue-router/vite"
 import { visualizer } from "rollup-plugin-visualizer"
-import { MagicRegExpTransformPlugin } from "magic-regexp/transform"
+import Pages from "vite-plugin-pages"
 
 export default defineConfig({
   resolve: {
     alias: {
-      "src/": `${path.resolve(__dirname, "src")}/`,
+      "server/": `${path.resolve(process.cwd(), "../server/src")}/`,
     },
   },
   plugins: [
-    VueRouter({
-      dts: "src/vue-router.d.ts",
-    }),
     Vue(),
     AutoImport({
       imports: [
         "vue",
         "@vueuse/core",
-        VueRouterAutoImports,
+        "vue-router",
         {
           "naive-ui": [
             "useDialog",
@@ -45,11 +40,11 @@ export default defineConfig({
       include: [/\.vue$/, /\.vue\?vue/],
       dts: "src/components.d.ts",
     }),
+    Pages(),
     unocss(),
     visualizer({
-      filename: "stats-client.html",
+      filename: "../../stats-client.html",
     }),
-    MagicRegExpTransformPlugin.vite(),
   ],
   // currently dev only
   optimizeDeps: {
@@ -68,6 +63,7 @@ export default defineConfig({
     rollupOptions: {
       treeshake: "recommended",
     },
-    emptyOutDir: true,
+    emptyOutDir: false,
+    outDir: "../../dist",
   },
 })

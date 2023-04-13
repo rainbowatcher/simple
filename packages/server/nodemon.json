@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": ["**.d.ts"],
+  "execMap": {
+    "ts": "jiti"
+  },
+  "watch": [
+    "./src/**/*.ts"
+  ],
+  "delay": 1500
+}
