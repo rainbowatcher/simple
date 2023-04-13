@@ -1,24 +1,16 @@
 <script lang="ts" setup>
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   content?: string
   title?: string
-}>(), { content: "" })
+}>()
 
 const container = ref<HTMLDivElement>()
-const editorWrapper = ref()
-const isDark = useDark()
 const { messager } = useDiscreteApi()
-const theme = computed(() => isDark.value ? "vs-dark" : "vs")
-const { instance, resize } = useMonacoEditor(container, {
-  theme: theme.value,
-  value: props.content,
-  language: "handlebars",
-})
+const { instance, resize } = useMonacoEditor({ container, data: props.content })
 const [isMaximize, toggleMaximize] = useToggle(false)
 
 watchEffect(() => {
-  instance.value?.updateOptions({ theme: theme.value })
-  instance.value?.setValue(props.content)
+  instance.value?.setValue(props.content || "")
 })
 
 const save = () => {
@@ -33,7 +25,7 @@ const save = () => {
 </script>
 
 <template>
-  <div ref="editorWrapper" grow-1 max-h-screen w-full min-w-md :class="[isMaximize ? 'maximize' : '']">
+  <div grow-1 max-h-screen w-full min-w-md :class="[isMaximize ? 'maximize' : '']">
     <div h-7 w-auto bg="dark:#2f2f31 neutral-1" rounded-t-lg px-2 flex justify-between>
       <p block m0 p0 leading-7>
         {{ title }}
