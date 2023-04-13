@@ -1,5 +1,5 @@
 import util from "util"
-import h3 from "h3"
+import * as h3 from "h3"
 import useLogger from "./logger"
 
 const logger = useLogger("http")
