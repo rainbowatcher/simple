@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     DataSourceForm: typeof import('./components/management/datasource/DataSourceForm.vue')['default']
     DataSourceManage: typeof import('./components/management/datasource/DataSourceManage.vue')['default']
+    Editor: typeof import('./components/app/Editor.vue')['default']
     Header: typeof import('./components/app/Header.vue')['default']
     HeaderExtra: typeof import('./components/app/HeaderExtra.vue')['default']
     HeaderHero: typeof import('./components/app/HeaderHero.vue')['default']
@@ -38,6 +39,7 @@ declare module '@vue/runtime-core' {
     NModal: typeof import('naive-ui')['NModal']
     NResult: typeof import('naive-ui')['NResult']
     NSelect: typeof import('naive-ui')['NSelect']
+    NSkeleton: typeof import('naive-ui')['NSkeleton']
     NSpace: typeof import('naive-ui')['NSpace']
     NSwitch: typeof import('naive-ui')['NSwitch']
     NTabPane: typeof import('naive-ui')['NTabPane']
@@ -47,6 +49,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     SettingsPanel: typeof import('./components/settings/SettingsPanel.vue')['default']
     SideMenu: typeof import('./components/app/SideMenu.vue')['default']
+    Studio: typeof import('./components/develop/Studio.vue')['default']
     TemplateEditor: typeof import('./components/management/template/TemplateEditor.vue')['default']
     TemplateFileTree: typeof import('./components/management/template/TemplateFileTree.vue')['default']
     TemplateManage: typeof import('./components/management/template/TemplateManage.vue')['default']

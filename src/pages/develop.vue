@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  dev
+  <Studio />
 </template>
 
 <style scoped>
