@@ -2,6 +2,7 @@
 </script>
 
 <template>
+  <!-- TODO: use router instead of tabpanel -->
   <NTabs type="line" :bar-width="28" animated>
     <NTabPane name="template" tab="Template" display-directive="show:lazy">
       <TemplateManage />
