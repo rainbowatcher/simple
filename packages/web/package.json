@@ -1,0 +1,37 @@
+{
+  "name": "simple-web",
+  "version": "0.0.1-alpha.3",
+  "description": "Frontend of simple server",
+  "author": "rainbowatcher <rainbow-w@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "naive-ui": "^2.34.3",
+    "vue": "^3.2.47",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "4.1.6"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.16",
+    "@iconify-json/mdi": "^1.1.50",
+    "@iconify-json/simple-icons": "^1.1.48",
+    "@unocss/preset-attributify": "^0.50.6",
+    "@unocss/preset-icons": "^0.50.6",
+    "@unocss/preset-uno": "^0.50.6",
+    "@unocss/reset": "^0.50.6",
+    "@vitejs/plugin-vue": "^4.1.0",
+    "@vueuse/core": "^9.13.0",
+    "@vueuse/integrations": "^9.13.0",
+    "axios": "^1.3.4",
+    "monaco-editor": "^0.36.1",
+    "typescript": "^5.0.3",
+    "unocss": "^0.50.6",
+    "unplugin-auto-import": "^0.15.2",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "*",
+    "vite-plugin-pages": "^0.29.0"
+  }
+}

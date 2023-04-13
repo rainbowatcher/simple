@@ -1,7 +1,6 @@
 import path from "node:path"
 import util from "node:util"
 import type { PathLike } from "node:fs"
-import { formatDate } from "@vueuse/core"
 import * as fs from "fs-extra"
 import type {
   BasicReporterOptions,
@@ -62,9 +61,13 @@ class FileReporter extends BasicReporter {
 }
 
 export const getLogFilePath = () => {
-  const today = formatDate(new Date(), "YYYY-MM-DD")
+  const today = new Date()
+  const year = today.getFullYear()
+  const month = String(today.getMonth() + 1).padStart(2, "0")
+  const day = String(today.getDate()).padStart(2, "0")
+  const todayStr = `${year}-${month}-${day}`
   const logDir = getLogDir()
-  const logFileName = `simple-${today}.log`
+  const logFileName = `simple-${todayStr}.log`
   return path.resolve(logDir, logFileName)
 }
 

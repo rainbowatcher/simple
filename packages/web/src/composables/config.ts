@@ -6,4 +6,3 @@ export const useAppConfig = () => ({
     { key: 4, label: "Settings", link: "/settings", icon: "i-carbon-settings" },
   ],
 })
-

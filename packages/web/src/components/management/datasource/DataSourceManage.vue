@@ -5,7 +5,7 @@ import type {
   TableColumn,
   TableColumns,
 } from "naive-ui/es/data-table/src/interface"
-import type { DataSourceVO } from "src/server/domain"
+import type { DataSourceVO } from "server/domain"
 import { capitalize } from "vue"
 import DataSourceForm from "./DataSourceForm.vue"
 
