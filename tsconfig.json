@@ -14,15 +14,13 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "server/*": ["server/*"]
+      "src/*": ["src/*"]
     }
   },
   "include": [
     "src/**/*.ts",
-    "server/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.vue",
-    "src/*.ext",
     "vite.config.ts"
   ]
 }
