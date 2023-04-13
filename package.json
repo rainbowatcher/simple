@@ -8,19 +8,13 @@
   "author": "rainbowatcher <rainbow-w@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server/server.ts",
-    "?dev": "run server in dev mode.",
+    "dev": "cross-env NODE_ENV=development pnpm start",
     "debug": "pnpm dev -- --debug",
-    "?debug": "run server in debug mode.",
     "lint": "eslint .",
-    "start": "cross-env NODE_ENV=production pnpm dev",
-    "?start": "run server in prod mode.",
+    "start": "nodemon src/server/server.ts",
     "build": "vite build",
-    "?build": "build both frontend and backend code.",
     "release": "bumpp",
-    "?release": "release package.",
     "up": "taze -I",
-    "?up": "update dependencies.",
     "prepare": "husky install"
   },
   "devDependencies": {
