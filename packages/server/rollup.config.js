@@ -1,12 +1,12 @@
+import path from "node:path"
+import { deleteSync } from "del"
+import c from "picocolors"
 import { defineConfig } from "rollup"
 import { nodeResolve } from "@rollup/plugin-node-resolve"
 import typescript from "@rollup/plugin-typescript"
 import commonjs from "@rollup/plugin-commonjs"
 import json from "@rollup/plugin-json"
 import { visualizer } from "rollup-plugin-visualizer"
-import { terser } from "rollup-plugin-terser"
-// @ts-expect-error type
-import clear from "rollup-plugin-clear"
 
 export default defineConfig({
   input: "src/server.ts",
@@ -15,8 +15,16 @@ export default defineConfig({
     typescript(),
     commonjs(),
     json(),
-    clear({ targets: ["../../dist"] }),
+
     visualizer({ filename: "../../stats-server.html" }),
+    {
+      name: "clear",
+      buildStart() {
+        const buildPath = path.resolve(process.cwd(), "../../dist")
+        console.log(c.green(`deleted ${buildPath}`))
+        deleteSync(`${buildPath}/**`, { force: true })
+      },
+    },
     // terser({ compress: true, ecma: 2020 }),
   ],
   treeshake: "smallest",
