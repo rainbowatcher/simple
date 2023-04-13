@@ -47,15 +47,27 @@ export default defineConfig({
     }),
     unocss(),
     visualizer({
-      filename: "stats.html",
+      filename: "stats-client.html",
     }),
     MagicRegExpTransformPlugin.vite(),
   ],
-  build: {
-    // minify: false,
-    // rollupOptions: {
-    //   treeshake: "smallest",
-    // }
+  // currently dev only
+  optimizeDeps: {
+    include: [
+      "monaco-editor/esm/vs/language/json/json.worker",
+      "monaco-editor/esm/vs/language/css/css.worker",
+      "monaco-editor/esm/vs/language/html/html.worker",
+      "monaco-editor/esm/vs/language/typescript/ts.worker",
+      "monaco-editor/esm/vs/editor/editor.worker",
+      "monaco-editor",
+      "naive-ui",
+    ],
   },
   clearScreen: false,
+  build: {
+    rollupOptions: {
+      treeshake: "recommended",
+    },
+    emptyOutDir: true,
+  },
 })

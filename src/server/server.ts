@@ -1,12 +1,12 @@
 import { createServer } from "node:http"
 import fs from "node:fs"
-import h3 from "h3"
+import * as h3 from "h3"
 import * as vite from "vite"
 import sirv from "sirv"
 import useLogger from "./utils/logger"
 import router from "./routes"
 
-const isDev = process.env.NODE_ENV !== "production"
+const isDev = process.env.NODE_ENV === "development"
 const logger = useLogger("server")
 
 const app = h3.createApp()

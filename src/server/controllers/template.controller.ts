@@ -53,7 +53,7 @@ function templateController(router: Router) {
     `${apiPath}/get`, eventHandler(async (e) => {
       const { url } = await parseRequest(e)
       const path = url.searchParams.get("path")
-      // @ts-expect-error null
+      // @ts-expect-error type
       const res = await templateService.loadTemplate(path)
       return res.send(e)
     }),

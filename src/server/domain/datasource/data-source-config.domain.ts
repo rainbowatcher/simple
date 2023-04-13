@@ -1,5 +1,7 @@
-import { z } from "zod"
-import validator from "validator"
+import z from "zod"
+import isPort from "validator/es/lib/isPort"
+import isFQDN from "validator/es/lib/isFQDN"
+import isIP from "validator/es/lib/isIP"
 
 export const dataSourceTypes = [
   "hive",
@@ -45,10 +47,10 @@ export const dataSourceVoValidator = z.object({
   host: z
     .string()
     .refine(
-      str => validator.isFQDN(str) || validator.isIP(str),
+      str => isFQDN(str) || isIP(str),
       "Not a valid domain or IP address",
     ),
-  port: z.string().refine(str => validator.isPort(str)),
+  port: z.string().refine(str => isPort(str)),
   user: z.string().optional(),
   password: z.string().optional(),
   database: z.string().optional(),

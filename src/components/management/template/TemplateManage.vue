@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const editorContent = ref<string>()
+const editorContent = ref("")
 const title = ref("title")
 const update = (path: string, template: string) => {
   title.value = path
@@ -15,9 +15,3 @@ const update = (path: string, template: string) => {
     <TemplateEditor :title="title" :content="editorContent" />
   </div>
 </template>
-
-<style scoped>
-.template-manage-tree:hover .template-tree-header-extra {
-  opacity: 1;
-}
-</style>
