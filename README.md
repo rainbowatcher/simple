@@ -14,9 +14,9 @@ comming soon
 
 - [x] settings
 - [x] datasource management
-- [ ] template management
-- [ ] data type mapping management
+- [x] template management
 - [ ] data work page
+- [ ] data type mapping management
 - [ ] dashboard page
 
 ## License
