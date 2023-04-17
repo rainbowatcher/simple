@@ -35,22 +35,22 @@ const nodeProps = ({ option }: { option: TreeOption }) => {
 <template>
   <div class="template-tree-header" flex="~ row gap-2" justify-between>
     <NInput v-model:value.lazy="searchKey" type="text" placeholder="Search" size="small" />
-    <div flex="~ row" items-center rounded-sm my1px bg="dark:#2f2f31" outline="1 solid neutral200 dark:none">
-      <div class="i-mdi-file-plus" btn opacity-40 hover:opacity-100 @click="newFile" />
-      <div class="i-mdi-folder-plus" btn opacity-40 hover:opacity-100 />
-      <div class="i-mdi-refresh" btn opacity-40 hover:opacity-100 @click="refresh" />
-      <div class="i-mdi-collapse-all" btn opacity-40 hover:opacity-100 />
-      <div class="i-mdi-delete" btn opacity-40 hover:opacity-100 @click="trash(selectedKey)" />
+    <div flex="~ row" my1px items-center rounded-sm bg="dark:#2f2f31" outline="1 solid neutral200 dark:none">
+      <div class="i-mdi-file-plus" opacity-40 btn hover:opacity-100 @click="newFile" />
+      <div class="i-mdi-folder-plus" opacity-40 btn hover:opacity-100 />
+      <div class="i-mdi-refresh" opacity-40 btn hover:opacity-100 @click="refresh" />
+      <div class="i-mdi-collapse-all" opacity-40 btn hover:opacity-100 />
+      <div class="i-mdi-delete" opacity-40 btn hover:opacity-100 @click="trash(selectedKey)" />
     </div>
   </div>
   <NTree
     v-model:data="data"
-    block-line
-    keyboard
+
+
     :animated="false"
-    expand-on-click
+
     label-field="value"
-    h-full
+    keyboard expand-on-click block-line h-full
     :node-props="nodeProps"
     :pattern="searchKey"
     :on-update:selected-keys="onSelect"

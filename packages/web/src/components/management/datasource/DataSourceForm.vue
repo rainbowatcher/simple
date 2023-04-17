@@ -81,8 +81,8 @@ function isSubmitDisable() {
     v-model:model="data"
     label-placement="left"
     label-width="6rem"
-    max-w-xl
     ma
+    max-w-xl
     :rules="rules"
   >
     <NFormItem label="Name" path="name">

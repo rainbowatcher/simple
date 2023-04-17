@@ -56,8 +56,8 @@ const data = ref("")
 <template>
   <n-select
     v-model:value="selectedValues"
-    multiple
     filterable
+    multiple
     placeholder="Select templates"
     :options="options"
   />

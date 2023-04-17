@@ -18,13 +18,13 @@ const [collapsed, toggleCollapse] = useToggle(true)
         <SideMenu :collapsed="collapsed" />
       </NLayoutSider>
       <NLayout bordered content-style="height: calc(100vh - calc(var(--h-header) + 1px))">
-        <NLayoutContent dark:bg-neutral-800 embedded>
+        <NLayoutContent embedded dark:bg-neutral-800>
           <div px4 py2>
             <NCard overflow-auto>
               <slot name="default" />
             </NCard>
             <NDivider />
-            <div flex h-14 items-center justify-center>
+            <div h-14 flex items-center justify-center>
               We do have footer.
             </div>
           </div>
