@@ -9,7 +9,7 @@ const update = (path: string, template: string) => {
 
 <template>
   <div class="template-manage-panel" flex="~ row gap-4">
-    <div class="template-manage-tree" flex-none min-w-48 h-auto>
+    <div class="template-manage-tree" h-auto min-w-48 flex-none>
       <TemplateFileTree @update-editor="update" />
     </div>
     <TemplateEditor :title="title" :content="editorContent" />

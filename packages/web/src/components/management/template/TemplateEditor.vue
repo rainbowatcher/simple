@@ -25,9 +25,9 @@ const save = () => {
 </script>
 
 <template>
-  <div grow-1 max-h-screen w-full min-w-md :class="[isMaximize ? 'maximize' : '']">
-    <div h-7 w-auto bg="dark:#2f2f31 neutral-1" rounded-t-lg px-2 flex justify-between>
-      <p block m0 p0 leading-7>
+  <div max-h-screen min-w-md w-full grow-1 :class="[isMaximize ? 'maximize' : '']">
+    <div bg="dark:#2f2f31 neutral-1" h-7 w-auto flex justify-between rounded-t-lg px-2>
+      <p m0 block p0 leading-7>
         {{ title }}
       </p>
       <div flex items-center>
@@ -35,7 +35,7 @@ const save = () => {
         <div class="i-mdi-fullscreen" btn @click="toggleMaximize();resize()" />
       </div>
     </div>
-    <div ref="container" border="1 solid neutral100 dark:none" w-auto h-md class="editor-container" />
+    <div ref="container" border="1 solid neutral100 dark:none" h-md w-auto class="editor-container" />
   </div>
 </template>
 

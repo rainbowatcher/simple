@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="container" border="1 solid neutral100 dark:none" w-auto h-md class="editor-container" />
+  <div ref="container" border="1 solid neutral100 dark:none" h-md w-auto class="editor-container" />
 </template>
 
 <style scoped>
