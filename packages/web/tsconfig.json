@@ -5,7 +5,7 @@
     "types": ["vite/client", "naive-ui/volar"],
     "moduleResolution": "node",
     "paths": {
-      "server/*": ["../server/src/*"]
+      "server/*": ["packages/server/src/*"]
     }
   },
   "include": [

@@ -14,8 +14,9 @@
     "lint": "pnpm -r lint",
     "start": "nodemon src/server/server.ts",
     "build": "pnpm -r build",
-    "release": "bumpp",
+    "release": "bumpp -r",
     "up": "taze -I",
+    "typecheck": "tsc --noEmit",
     "prepare": "husky install"
   },
   "devDependencies": {
