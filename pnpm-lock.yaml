@@ -10,7 +10,7 @@ specifiers:
   '@types/fs-extra': ^11.0.1
   '@types/node': ^18.15.11
   '@types/validator': ^13.7.14
-  '@unocss/reset': ^0.50.6
+  '@unocss/reset': ^0.51.0
   '@vitejs/plugin-vue': ^4.1.0
   '@vueuse/core': ^9.13.0
   '@vueuse/integrations': ^9.13.0
@@ -57,7 +57,7 @@ devDependencies:
   '@types/fs-extra': 11.0.1
   '@types/node': 18.15.11
   '@types/validator': 13.7.14
-  '@unocss/reset': 0.50.6
+  '@unocss/reset': 0.51.4
   '@vitejs/plugin-vue': 4.1.0_vite@4.1.4+vue@3.2.47
   '@vueuse/core': 9.13.0_vue@3.2.47
   '@vueuse/integrations': 9.13.0_xh76zsky6vxlbteuiagwh5fopa
@@ -1252,6 +1252,10 @@ packages:
 
   /@unocss/reset/0.50.6:
     resolution: {integrity: sha512-e1fuSEgp1p7FgpsIZKNejOKgq4gyZcDGDvi+6544x458hInM6MfiMQNP95UBJEG4JZXq6qCZ8t7tRVWS2m5IXg==}
+    dev: true
+
+  /@unocss/reset/0.51.4:
+    resolution: {integrity: sha512-3FnajZSOrQ4qSbpkY1IGRIFYw8I9E98SBXvjMnHqSl8k4YPbBP29W3YrgSVBMOnPNRL67hRcTaMF3nmbnBuWtQ==}
     dev: true
 
   /@unocss/scope/0.50.6:

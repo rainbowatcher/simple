@@ -33,7 +33,7 @@
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.11",
     "@types/validator": "^13.7.14",
-    "@unocss/reset": "^0.50.6",
+    "@unocss/reset": "^0.51.0",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vueuse/core": "^9.13.0",
     "@vueuse/integrations": "^9.13.0",
