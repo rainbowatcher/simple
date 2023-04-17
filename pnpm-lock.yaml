@@ -5,7 +5,7 @@ specifiers:
   '@commitlint/config-conventional': ^17.4.4
   '@iconify-json/carbon': ^1.1.16
   '@iconify-json/mdi': ^1.1.50
-  '@rainbowatcher/eslint-config': 0.0.1-beta.15
+  '@rainbowatcher/eslint-config': 0.1.0
   '@total-typescript/ts-reset': ^0.4.2
   '@types/fs-extra': ^11.0.1
   '@types/node': ^18.15.11
@@ -52,7 +52,7 @@ devDependencies:
   '@commitlint/config-conventional': 17.4.4
   '@iconify-json/carbon': 1.1.16
   '@iconify-json/mdi': 1.1.50
-  '@rainbowatcher/eslint-config': 0.0.1-beta.15_vwh6htx42aidho2qgfca5u5rwm
+  '@rainbowatcher/eslint-config': 0.1.0_vwh6htx42aidho2qgfca5u5rwm
   '@total-typescript/ts-reset': 0.4.2
   '@types/fs-extra': 11.0.1
   '@types/node': 18.15.11
@@ -822,8 +822,8 @@ packages:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
     dev: true
 
-  /@rainbowatcher/eslint-config-js/0.0.1-beta.15_2niwd2uqke2jpnohndnwvllrkm:
-    resolution: {integrity: sha512-OusFXMbhYnSVmS1aziAp/cMjwvlje0nIA98ytH/0Ub1WtT8ivKDqs4b9XrQPUHQWlGxQ7FoYq3FAwsUT+BXN2A==}
+  /@rainbowatcher/eslint-config-js/0.1.0_2niwd2uqke2jpnohndnwvllrkm:
+    resolution: {integrity: sha512-e1sWpA/MKgVVBH2Bsxapu0LjnicqY+nS5tAXFxGoGNx9DrP37lD6RV05Sl37+lkEzdlQbuPksuW5xVJKxSadDw==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
@@ -836,8 +836,8 @@ packages:
       - supports-color
     dev: true
 
-  /@rainbowatcher/eslint-config-json/0.0.1-beta.15_eslint@8.37.0:
-    resolution: {integrity: sha512-clRs0uqIf1L93ma0IOuzHs/1bfh96tVw7aU/4zxn+CrRmkVc634LQ76DaTx5e02jCbbBfXIou0DIkAJksa9haQ==}
+  /@rainbowatcher/eslint-config-json/0.1.0_eslint@8.37.0:
+    resolution: {integrity: sha512-+8K47SwGv7utnDSAdERgmV0yfsKcvnKjSqcJaBMUATtm2ej4Hyfw6OXa26NmrSSMeBqo4X7KD2eZYC/te40mDg==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
@@ -845,13 +845,13 @@ packages:
       eslint-plugin-jsonc: 2.7.0_eslint@8.37.0
     dev: true
 
-  /@rainbowatcher/eslint-config-ts/0.0.1-beta.15_vwh6htx42aidho2qgfca5u5rwm:
-    resolution: {integrity: sha512-1I0lugxvr23tblGR+K7+4fGv5w/XtSjO1hAHdNjr1JfWIR2X4WPUq4lfB7sUyYJWRDl8L0I4aI/YF2WtKP402A==}
+  /@rainbowatcher/eslint-config-ts/0.1.0_vwh6htx42aidho2qgfca5u5rwm:
+    resolution: {integrity: sha512-fAU73qA04LV1kTk57hyLQ56t/R0asEvGPOTRjbv40XM8cIEvpvH9XT6D/h8ZCfj6Q/trPnaPurw8J+jlgZ2pyQ==}
     peerDependencies:
       eslint: '>=7.4.0'
       typescript: '>= 2.8.0'
     dependencies:
-      '@rainbowatcher/eslint-config-js': 0.0.1-beta.15_2niwd2uqke2jpnohndnwvllrkm
+      '@rainbowatcher/eslint-config-js': 0.1.0_2niwd2uqke2jpnohndnwvllrkm
       '@typescript-eslint/eslint-plugin': 5.57.0_z24sz2fazj3bxoipp6m4s7b2mi
       '@typescript-eslint/parser': 5.57.0_vwh6htx42aidho2qgfca5u5rwm
       eslint: 8.37.0
@@ -864,12 +864,12 @@ packages:
       - supports-color
     dev: true
 
-  /@rainbowatcher/eslint-config-vue/0.0.1-beta.15_vwh6htx42aidho2qgfca5u5rwm:
-    resolution: {integrity: sha512-YEf0ouwPFQIArJwsB7TAGUt+E71FuQwVWqec08+ajETYkd0LLdpEXSB6WcO3Ucu0ChiqO6to6Ev7HuT2jOOI0Q==}
+  /@rainbowatcher/eslint-config-vue/0.1.0_vwh6htx42aidho2qgfca5u5rwm:
+    resolution: {integrity: sha512-LcHcFBaEUpWfPIShfh0dAiegf2AQqberPRlFikpPb2k+zcqse2OirLf7aU4W0awDaBPV/ottNy2whUXXWkbXKQ==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@rainbowatcher/eslint-config-ts': 0.0.1-beta.15_vwh6htx42aidho2qgfca5u5rwm
+      '@rainbowatcher/eslint-config-ts': 0.1.0_vwh6htx42aidho2qgfca5u5rwm
       eslint: 8.37.0
       eslint-plugin-vue: 9.10.0_eslint@8.37.0
       local-pkg: 0.4.3
@@ -881,13 +881,13 @@ packages:
       - typescript
     dev: true
 
-  /@rainbowatcher/eslint-config/0.0.1-beta.15_vwh6htx42aidho2qgfca5u5rwm:
-    resolution: {integrity: sha512-rzI7PGQOcPIdGsT3Pp2fhM2fuNEyxFtXUPZ5exNn/KRo0ja1uz/4QbmPg6cyQPlIXXhatvaW0deO5uP9+svUuw==}
+  /@rainbowatcher/eslint-config/0.1.0_vwh6htx42aidho2qgfca5u5rwm:
+    resolution: {integrity: sha512-BBusgOFo/Z6oosZFHELfuAwKBIh7wdBNqjfOT91l990zNdxfXWMwCjO9ImJ/MotySIeSKgqe5HaUD7XgwywdiA==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@rainbowatcher/eslint-config-json': 0.0.1-beta.15_eslint@8.37.0
-      '@rainbowatcher/eslint-config-vue': 0.0.1-beta.15_vwh6htx42aidho2qgfca5u5rwm
+      '@rainbowatcher/eslint-config-json': 0.1.0_eslint@8.37.0
+      '@rainbowatcher/eslint-config-vue': 0.1.0_vwh6htx42aidho2qgfca5u5rwm
       eslint: 8.37.0
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
