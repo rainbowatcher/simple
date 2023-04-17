@@ -15,7 +15,6 @@ export default defineConfig({
     typescript(),
     commonjs(),
     json(),
-
     visualizer({ filename: "../../stats-server.html" }),
     {
       name: "clear",
@@ -46,9 +45,14 @@ export default defineConfig({
     // "husky",
     // "jiti",
   ],
-  output: {
+  output: [{
+    compact: true,
+    file: "../../dist/server.cjs",
+    format: "cjs",
+  },
+  {
     dir: "../../dist",
     compact: true,
-    format: "esm",
-  },
+    format: "es",
+  }],
 })

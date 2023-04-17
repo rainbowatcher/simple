@@ -12,7 +12,7 @@
     "dev:fe": "pnpm --filter simple-web dev",
     "debug": "pnpm dev -- --debug",
     "lint": "pnpm -r lint",
-    "start": "nodemon src/server/server.ts",
+    "start": "nodemon dist/server.js",
     "build": "pnpm -r build",
     "release": "bumpp -r",
     "up": "taze -I",
