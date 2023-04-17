@@ -10,7 +10,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "cross-env NODE_ENV=development pnpm start",
-    "start": "nodemon src/server.ts"
+    "start": "nodemon src/server.ts",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
