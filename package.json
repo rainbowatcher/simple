@@ -11,7 +11,7 @@
     "dev": "pnpm --filter simple-server dev",
     "dev:fe": "pnpm --filter simple-web dev",
     "debug": "pnpm dev -- --debug",
-    "lint": "eslint .",
+    "lint": "pnpm -r lint",
     "start": "nodemon src/server/server.ts",
     "build": "pnpm -r build",
     "release": "bumpp",
