@@ -1,6 +1,6 @@
 import { useAxios } from "@vueuse/integrations/useAxios"
-import type { DataSourceType, DataSourceVO } from "src/server/domain"
-import type { Resp } from "src/server/utils/http"
+import type { DataSourceType, DataSourceVO } from "server/domain"
+import type { Resp } from "server/utils/http"
 import type { FormRules } from "naive-ui"
 import { isString } from "@vueuse/core"
 import isIP from "validator/es/lib/isIP"

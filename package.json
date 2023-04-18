@@ -16,7 +16,7 @@
     "build": "pnpm -r build",
     "release": "bumpp -r",
     "up": "taze -I",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "pnpm -r typecheck",
     "prepare": "husky install"
   },
   "devDependencies": {
