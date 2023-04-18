@@ -28,7 +28,7 @@
     "@unocss/reset": "^0.50.6",
     "@vitejs/plugin-vue": "^4.1.0",
     "@vueuse/core": "^9.13.0",
-    "@vueuse/integrations": "^9.13.0",
+    "@vueuse/integrations": "^10.0.0",
     "axios": "^1.3.4",
     "eslint": "*",
     "fuse.js": "^6.6.2",
