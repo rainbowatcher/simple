@@ -94,7 +94,7 @@ importers:
       '@iconify-json/mdi': ^1.1.50
       '@iconify-json/simple-icons': ^1.1.48
       '@unocss/eslint-config': ^0.51.4
-      '@unocss/preset-attributify': ^0.50.6
+      '@unocss/preset-attributify': ^0.51.0
       '@unocss/preset-icons': ^0.51.0
       '@unocss/preset-uno': ^0.50.6
       '@unocss/reset': ^0.50.6
@@ -127,7 +127,7 @@ importers:
       '@iconify-json/mdi': 1.1.50
       '@iconify-json/simple-icons': 1.1.49
       '@unocss/eslint-config': 0.51.4_voubu7prgxjfsfbgx5d4sqnwiy
-      '@unocss/preset-attributify': 0.50.8
+      '@unocss/preset-attributify': 0.51.4
       '@unocss/preset-icons': 0.51.4
       '@unocss/preset-uno': 0.50.8
       '@unocss/reset': 0.50.8
