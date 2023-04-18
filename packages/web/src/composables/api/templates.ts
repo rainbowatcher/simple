@@ -1,8 +1,8 @@
 import { useAxios } from "@vueuse/integrations/useAxios"
 import { withDirectives } from "vue"
-import type { Resp } from "src/server/utils/http"
+import type { Resp } from "server/utils/http"
+import type { FileItem } from "server/service"
 import type { TreeDropInfo, TreeOption } from "naive-ui/es/tree/src/interface"
-import type { FileItem } from "src/server/service"
 import type { onUpdateExpandedKeys } from "naive-ui/es/tree/src/Tree"
 import client from "./client"
 

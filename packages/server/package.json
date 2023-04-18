@@ -11,7 +11,8 @@
     "build": "rollup -c",
     "dev": "cross-env NODE_ENV=development pnpm start",
     "start": "nodemon src/server.ts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",

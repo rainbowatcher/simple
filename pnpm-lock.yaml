@@ -6,21 +6,14 @@ importers:
     specifiers:
       '@commitlint/cli': ^17.5.1
       '@commitlint/config-conventional': ^17.4.4
-      '@iconify-json/carbon': ^1.1.16
-      '@iconify-json/mdi': ^1.1.50
       '@rainbowatcher/eslint-config': 0.1.0
       '@total-typescript/ts-reset': ^0.4.2
       '@types/node': ^18.15.11
       '@types/validator': ^13.7.14
       '@unocss/reset': ^0.51.0
-      '@vitejs/plugin-vue': ^4.1.0
-      '@vueuse/core': ^9.13.0
-      '@vueuse/integrations': ^9.13.0
-      axios: ^1.3.4
       bumpp: ^9.1.0
       cross-env: ^7.0.3
       eslint: ^8.37.0
-      fuse.js: ^6.6.2
       husky: ^8.0.3
       jiti: ^1.18.2
       nodemon: ^2.0.22
@@ -33,21 +26,14 @@ importers:
     devDependencies:
       '@commitlint/cli': 17.5.1
       '@commitlint/config-conventional': 17.4.4
-      '@iconify-json/carbon': 1.1.16
-      '@iconify-json/mdi': 1.1.50
       '@rainbowatcher/eslint-config': 0.1.0_voubu7prgxjfsfbgx5d4sqnwiy
       '@total-typescript/ts-reset': 0.4.2
       '@types/node': 18.15.11
       '@types/validator': 13.7.14
       '@unocss/reset': 0.51.4
-      '@vitejs/plugin-vue': 4.1.0_vite@4.1.4
-      '@vueuse/core': 9.13.0
-      '@vueuse/integrations': 9.13.0_axios@1.3.5+fuse.js@6.6.2
-      axios: 1.3.5
       bumpp: 9.1.0
       cross-env: 7.0.3
       eslint: 8.38.0
-      fuse.js: 6.6.2
       husky: 8.0.3
       jiti: 1.18.2
       nodemon: 2.0.22
@@ -109,7 +95,7 @@ importers:
       '@iconify-json/simple-icons': ^1.1.48
       '@unocss/eslint-config': ^0.51.4
       '@unocss/preset-attributify': ^0.50.6
-      '@unocss/preset-icons': ^0.50.6
+      '@unocss/preset-icons': ^0.51.0
       '@unocss/preset-uno': ^0.50.6
       '@unocss/reset': ^0.50.6
       '@vitejs/plugin-vue': ^4.1.0
@@ -117,6 +103,7 @@ importers:
       '@vueuse/integrations': ^9.13.0
       axios: ^1.3.4
       eslint: '*'
+      fuse.js: ^6.6.2
       monaco-editor: ^0.36.1
       naive-ui: ^2.34.3
       split.js: ^1.6.5
@@ -141,14 +128,15 @@ importers:
       '@iconify-json/simple-icons': 1.1.49
       '@unocss/eslint-config': 0.51.4_voubu7prgxjfsfbgx5d4sqnwiy
       '@unocss/preset-attributify': 0.50.8
-      '@unocss/preset-icons': 0.50.8
+      '@unocss/preset-icons': 0.51.4
       '@unocss/preset-uno': 0.50.8
       '@unocss/reset': 0.50.8
       '@vitejs/plugin-vue': 4.1.0_vite@4.1.4+vue@3.2.47
       '@vueuse/core': 9.13.0_vue@3.2.47
-      '@vueuse/integrations': 9.13.0_axios@1.3.5+vue@3.2.47
+      '@vueuse/integrations': 9.13.0_576bthpz3jtfuel5olrdy75i2i
       axios: 1.3.5
       eslint: 8.38.0
+      fuse.js: 6.6.2
       monaco-editor: 0.36.1
       typescript: 5.0.4
       unocss: 0.51.4_vite@4.1.4
@@ -1611,16 +1599,6 @@ packages:
       - rollup
     dev: true
 
-  /@vitejs/plugin-vue/4.1.0_vite@4.1.4:
-    resolution: {integrity: sha512-++9JOAFdcXI3lyer9UKUV4rfoQ3T1RN8yDqoCLar86s0xQct5yblxAE+yWgRnU5/0FOlVCpTZpYSBV/bGWrSrQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      vite: ^4.0.0
-      vue: ^3.2.25
-    dependencies:
-      vite: 4.1.4_@types+node@18.15.11
-    dev: true
-
   /@vitejs/plugin-vue/4.1.0_vite@4.1.4+vue@3.2.47:
     resolution: {integrity: sha512-++9JOAFdcXI3lyer9UKUV4rfoQ3T1RN8yDqoCLar86s0xQct5yblxAE+yWgRnU5/0FOlVCpTZpYSBV/bGWrSrQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -1709,18 +1687,6 @@ packages:
   /@vue/shared/3.2.47:
     resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==}
 
-  /@vueuse/core/9.13.0:
-    resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
-    dependencies:
-      '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.13.0
-      '@vueuse/shared': 9.13.0
-      vue-demi: 0.13.11
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: true
-
   /@vueuse/core/9.13.0_vue@3.2.47:
     resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
     dependencies:
@@ -1733,55 +1699,7 @@ packages:
       - vue
     dev: true
 
-  /@vueuse/integrations/9.13.0_axios@1.3.5+fuse.js@6.6.2:
-    resolution: {integrity: sha512-I1kX/tsfcvWWLZD7HZaP0LsSfchK13YxReLfharXhk72SFXp87doLbRaTfIF5w8m/gr/vPtcNyQPAXW7Ubpuww==}
-    peerDependencies:
-      async-validator: '*'
-      axios: '*'
-      change-case: '*'
-      drauu: '*'
-      focus-trap: '*'
-      fuse.js: '*'
-      idb-keyval: '*'
-      jwt-decode: '*'
-      nprogress: '*'
-      qrcode: '*'
-      universal-cookie: '*'
-    peerDependenciesMeta:
-      async-validator:
-        optional: true
-      axios:
-        optional: true
-      change-case:
-        optional: true
-      drauu:
-        optional: true
-      focus-trap:
-        optional: true
-      fuse.js:
-        optional: true
-      idb-keyval:
-        optional: true
-      jwt-decode:
-        optional: true
-      nprogress:
-        optional: true
-      qrcode:
-        optional: true
-      universal-cookie:
-        optional: true
-    dependencies:
-      '@vueuse/core': 9.13.0
-      '@vueuse/shared': 9.13.0
-      axios: 1.3.5
-      fuse.js: 6.6.2
-      vue-demi: 0.13.11
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: true
-
-  /@vueuse/integrations/9.13.0_axios@1.3.5+vue@3.2.47:
+  /@vueuse/integrations/9.13.0_576bthpz3jtfuel5olrdy75i2i:
     resolution: {integrity: sha512-I1kX/tsfcvWWLZD7HZaP0LsSfchK13YxReLfharXhk72SFXp87doLbRaTfIF5w8m/gr/vPtcNyQPAXW7Ubpuww==}
     peerDependencies:
       async-validator: '*'
@@ -1822,6 +1740,7 @@ packages:
       '@vueuse/core': 9.13.0_vue@3.2.47
       '@vueuse/shared': 9.13.0_vue@3.2.47
       axios: 1.3.5
+      fuse.js: 6.6.2
       vue-demi: 0.13.11_vue@3.2.47
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -1830,15 +1749,6 @@ packages:
 
   /@vueuse/metadata/9.13.0:
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
-    dev: true
-
-  /@vueuse/shared/9.13.0:
-    resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
-    dependencies:
-      vue-demi: 0.13.11
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
     dev: true
 
   /@vueuse/shared/9.13.0_vue@3.2.47:
@@ -6027,19 +5937,6 @@ packages:
       evtd: 0.2.4
       vue: 3.2.47
     dev: false
-
-  /vue-demi/0.13.11:
-    resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dev: true
 
   /vue-demi/0.13.11_vue@3.2.47:
     resolution: {integrity: sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==}
