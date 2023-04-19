@@ -2,7 +2,6 @@ import { useAxios } from "@vueuse/integrations/useAxios"
 import type { DataSourceType, DataSourceVO } from "server/domain"
 import type { Resp } from "server/utils/http"
 import type { FormRules } from "naive-ui"
-import { isString } from "@vueuse/core"
 import isIP from "validator/es/lib/isIP"
 import isFQDN from "validator/es/lib/isFQDN"
 import client from "./client"
@@ -37,7 +36,7 @@ export const useDataSourceFormRules = (): FormRules => ({
   host: {
     required: true,
     trigger: "blur",
-    validator: (_, value) => isString(value) && (isIP(value) || isFQDN(value)),
+    validator: (_, value) => typeof value === "string" && (isIP(value) || isFQDN(value)),
   },
   port: {
     required: true,

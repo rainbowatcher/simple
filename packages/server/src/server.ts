@@ -1,11 +1,12 @@
 import { createServer } from "node:http"
+import { basename } from "node:path"
 import * as h3 from "h3"
 import sirv from "sirv"
-import useLogger from "./utils/logger"
 import router from "./routes"
+import { getLogger } from "./utils/logger"
 
 const isDev = process.env.NODE_ENV === "development"
-const logger = useLogger("server")
+const logger = getLogger(basename(import.meta.url))
 
 const app = h3.createApp()
 app.use(router)
@@ -19,6 +20,7 @@ if (isDev) {
       root: "../web",
       server: {
         middlewareMode: true,
+        // hmr: server,
       },
     }).then((viteServer) => {
       logger.info("Create vite server in middleware mode")
@@ -43,5 +45,5 @@ if (isDev) {
 }
 
 server.listen(3210, () =>
-  logger.info("Server start listening at `http://localhost:%d`", 3210),
+  logger.info("Server start listening at http://localhost:%d", 3210),
 )

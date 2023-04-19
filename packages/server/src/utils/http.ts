@@ -1,8 +1,9 @@
 import util from "util"
+import { basename } from "node:path"
 import * as h3 from "h3"
-import useLogger from "./logger"
+import { getLogger } from "./logger"
 
-const logger = useLogger("http")
+const logger = getLogger(basename(import.meta.url))
 
 export type Resp<T = unknown> = Omit<BaseResp<T>, "send" | "withMsg">
 

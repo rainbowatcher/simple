@@ -1,96 +1,51 @@
-import path from "node:path"
-import util from "node:util"
-import type { PathLike } from "node:fs"
-import * as fs from "fs-extra"
-import type {
-  BasicReporterOptions,
-  ConsolaReporterArgs,
-  ConsolaReporterLogObject,
-} from "consola"
-import consola, {
-  BasicReporter,
-  FancyReporter,
-  LogLevel,
-} from "consola"
-import mri from "mri"
-import { getLogDir, projectName } from "../utils/path"
+import { resolve } from "node:path"
+import { format } from "node:util"
+import { createStream } from "rotating-file-stream"
+import { createConsola } from "consola"
+import type { ConsolaReporter } from "consola"
+import { getLogDir } from "./path"
 
-type FileReporterOptions = {
-  path: PathLike
-} & BasicReporterOptions
+const logFilePath = resolve(getLogDir(), "simple.log")
+const stream = createStream(
+  logFilePath, {
+    size: "10M",
+  },
+)
 
-class FileReporter extends BasicReporter {
-  path: PathLike
-  constructor(opts: FileReporterOptions) {
-    super(
-      Object.assign(
-        {
-          dateFormat: "YYYY-MM-DD HH:mm:ss",
-        },
-        opts,
-      ),
-    )
-    this.path = opts.path
-  }
-
-  formatLogObj(logObj: ConsolaReporterLogObject) {
-    return this.formatArgs(logObj.args)
-  }
-
-  log(logObj: ConsolaReporterLogObject, { async }: ConsolaReporterArgs) {
-    const dateStr = this.formatDate(logObj.date)
-    const logLevelStr = logObj.type.toUpperCase().padEnd(7, " ")
-    const msgStr = this.formatArgs(logObj.args)
-    const line = util.format(
-      "%s [%s] %s - %s",
-      dateStr,
-      logLevelStr,
-      logObj.tag,
-      msgStr,
-    )
-
-    const stream = fs.createWriteStream(this.path, {
-      encoding: "utf-8",
-      flags: "a",
-    })
-    super.log(
-      { ...logObj, args: [line], date: new Date(), level: LogLevel.Info },
-      { async, stderr: stream, stdout: stream },
-    )
-  }
+const fileReporter: ConsolaReporter = {
+  log: (label, _ctx) => {
+    const { date, type, tag } = label
+    const formatted = formatDate(date)
+    const level = type.toUpperCase().padEnd(5, " ")
+    const _tag = tag ? ` ${tag}` : ""
+    stream.write(`${formatted} [${level}]${_tag}: ${format(label.args[0], ...label.args.slice(1))}\n`)
+  },
 }
 
-export const getLogFilePath = () => {
-  const today = new Date()
-  const year = today.getFullYear()
-  const month = String(today.getMonth() + 1).padStart(2, "0")
-  const day = String(today.getDate()).padStart(2, "0")
-  const todayStr = `${year}-${month}-${day}`
-  const logDir = getLogDir()
-  const logFileName = `simple-${todayStr}.log`
-  return path.resolve(logDir, logFileName)
+const fancyReporter: ConsolaReporter = {
+  log: (label, _ctx) => {
+    const { date, type, tag } = label
+    const formatted = formatDate(date)
+    const level = type.toUpperCase().padEnd(5, " ")
+    const _tag = tag ? ` ${tag}` : ""
+    process.stdout.write(`${formatted} [${level}]${_tag}: ${format(label.args[0], ...label.args.slice(1))}\n`)
+  },
 }
 
-function initLogger() {
-  const logFilePath = getLogFilePath()
-  const exists = fs.existsSync(logFilePath)
-  if (!exists) fs.createFileSync(logFilePath)
-  const fileRp = new FileReporter({ path: getLogFilePath() })
-  const fancyRp = new FancyReporter()
-
-  const { debug } = mri(process.argv.slice(2))
-  return consola.create({
-    defaults: {
-      tag: projectName,
-    },
-    level: debug ? LogLevel.Debug : LogLevel.Info,
-    async: true,
-    reporters: [fileRp, fancyRp],
-  })
+function formatDate(date: Date) {
+  const year = date.getUTCFullYear()
+  const month = `${date.getMonth() + 1}`.padStart(2, "0")
+  const day = `${date.getDate()}`.padStart(2, "0")
+  const hour = `${date.getHours()}`.padStart(2, "0")
+  const min = `${date.getUTCMinutes()}`.padStart(2, "0")
+  const seconds = `${date.getUTCSeconds()}`.padStart(2, "0")
+  const formatted = `${year}-${month}-${day} ${hour}:${min}:${seconds}`
+  return formatted
 }
 
-const logger = initLogger()
+const consola = createConsola({
+  reporters: [fileReporter, fancyReporter],
+})
 
-export default function useLogger(scope?: string) {
-  return scope ? logger.withScope(scope) : logger
-}
+export const getLogger = (tag: string) => consola.withTag(tag)
+

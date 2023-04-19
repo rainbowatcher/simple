@@ -1,7 +1,7 @@
-import path from "node:path"
+import path, { basename } from "node:path"
 import fs from "node:fs/promises"
 import { createFileIfNotExists, getUserConfigDir } from "../utils/path"
-import useLogger from "../utils/logger"
+import { getLogger } from "../utils/logger"
 import type {
   DataSourceConfig,
   DataSourceSchema,
@@ -11,7 +11,7 @@ import type {
 import { DataSourceDO, dataSourceVoValidator } from "../domain"
 import { responses } from "../utils/http"
 
-const logger = useLogger("datasources:service")
+const logger = getLogger(basename(import.meta.url))
 
 export class DataSourceService {
   static readonly configFileName = "datasources.json"
