@@ -2,7 +2,7 @@
   "name": "simple-server",
   "type": "module",
   "version": "0.0.1-alpha.3",
-  "packageManager": "pnpm@8.3.0",
+  "packageManager": "pnpm@8.3.1",
   "description": "simple your work.",
   "author": "rainbowatcher <rainbow-w@qq.com>",
   "license": "MIT",
