@@ -82,6 +82,9 @@ importers:
       del:
         specifier: ^7.0.0
         version: 7.0.0
+      eslint:
+        specifier: ^8.39.0
+        version: 8.39.0
       execa:
         specifier: ^7.1.1
         version: 7.1.1
