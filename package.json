@@ -20,15 +20,15 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.1",
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
     "@rainbowatcher/eslint-config": "0.1.0",
     "@total-typescript/ts-reset": "^0.4.2",
-    "@types/node": "^18.16.3",
+    "@types/node": "^18.16.4",
     "@types/validator": "^13.7.15",
     "bumpp": "^9.1.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "husky": "^8.0.3",
     "jiti": "^1.18.2",
     "nodemon": "^2.0.22",
@@ -36,7 +36,7 @@
     "taze": "^0.10.1",
     "typescript": "^5.0.4",
     "validator": "^13.9.0",
-    "vite": "4.3.4",
+    "vite": "4.3.5",
     "zod": "^3.21.4"
   }
 }
