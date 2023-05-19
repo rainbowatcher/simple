@@ -30,7 +30,7 @@
     "@vueuse/core": "^10.1.2",
     "@vueuse/integrations": "^10.1.2",
     "axios": "^1.4.0",
-    "eslint": "^8.40.0",
+    "eslint": "~8.39.0",
     "fuse.js": "^6.6.2",
     "monaco-editor": "^0.38.0",
     "typescript": "^5.0.4",
