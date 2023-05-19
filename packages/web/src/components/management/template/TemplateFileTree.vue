@@ -16,7 +16,7 @@ const {
   onSelect,
   animationOnExpand,
 } = useTemplateTree()
-const nodeProps = ({ option }: { option: TreeOption }) => {
+function nodeProps({ option }: { option: TreeOption }) {
   return {
     async onClick() {
       if (!option.children && !option.disabled) {

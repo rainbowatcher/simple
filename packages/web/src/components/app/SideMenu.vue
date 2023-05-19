@@ -17,7 +17,7 @@ const menuOptions = sideMenu.map((i): MenuOption => {
 })
 const active = ref<string>()
 
-const routeTo = (e: string) => {
+function routeTo(e: string) {
   const link = menuOptions.find(o => o.key === e)?.link
   if (link) router.push(link as string)
   active.value = e

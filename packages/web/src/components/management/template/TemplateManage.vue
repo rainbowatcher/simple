@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const editorContent = ref("")
 const title = ref("title")
-const update = (path: string, template: string) => {
+function update(path: string, template: string) {
   title.value = path
   editorContent.value = template
 }

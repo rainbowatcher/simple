@@ -88,14 +88,14 @@ const { result, keyword, search } = useSearch<RowData>(voList, {
   fuzzy: true,
 })
 
-const addDataSource = async (rowData: Ref<DataSourceVO>) => {
+async function addDataSource(rowData: Ref<DataSourceVO>) {
   const { data } = await reqAddDataSource(rowData.value)
   const { message, status } = data.value!
   messager.create(message ?? "", { type: useType(status) })
   await refresh()
 }
 
-const deleteDataSource = (rowData: RowData) => {
+function deleteDataSource(rowData: RowData) {
   dialoger.warning({
     content: "Please comfirm you want to delete this record!",
     positiveText: "Confirm",
@@ -110,7 +110,7 @@ const deleteDataSource = (rowData: RowData) => {
   })
 }
 
-const editDataSource = async (rowData: RowData) => {
+async function editDataSource(rowData: RowData) {
   dataSourceView.value = rowData as DataSourceVO
   toggleEditModal()
 }

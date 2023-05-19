@@ -13,7 +13,7 @@ watchEffect(() => {
   instance.value?.setValue(props.content || "")
 })
 
-const save = () => {
+function save() {
   const content = instance.value?.getValue()
   const path = props.title
   if (path) {

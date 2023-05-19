@@ -45,7 +45,7 @@ const dbTypeOptions = dataSourceTypes.map<SelectBaseOption>(t => ({
 
 const rules = useDataSourceFormRules()
 
-const submit = () => {
+function submit() {
   if (formRef) {
     formRef.value?.validate((errors: FormValidationError[]) => {
       if (!errors) {
@@ -58,11 +58,11 @@ const submit = () => {
   }
 }
 
-const reset = () => {
+function reset() {
   data.value = { ...defaultData }
 }
 
-const onSelect = (type: DataSourceType) => {
+function onSelect(type: DataSourceType) {
   const port = defaultPorts[type]
   if (port) {
     data.value.port = `${port}`
