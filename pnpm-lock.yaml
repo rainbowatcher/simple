@@ -107,8 +107,8 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
       oracledb:
-        specifier: ^5.5.0
-        version: 5.5.0
+        specifier: ^6.0.0
+        version: 6.0.0
       picocolors:
         specifier: ^1.0.0
         version: 1.0.0
@@ -4860,9 +4860,9 @@ packages:
       word-wrap: 1.2.3
     dev: true
 
-  /oracledb@5.5.0:
-    resolution: {integrity: sha512-i5cPvMENpZP8nnqptB6l0pjiOyySj1IISkbM4Hr3yZEDdANo2eezarwZb9NQ8fTh5pRjmgpZdSyIbnn9N3AENw==}
-    engines: {node: '>=10.16'}
+  /oracledb@6.0.0:
+    resolution: {integrity: sha512-GDCXmfkNqKQ7FNEuvPFuxOiW0KLgt7OfhTKejgxZD0hhAMbq1snAiWtrCkr2I2jcZFolSOb/r+zIkc/KFdQ2Mg==}
+    engines: {node: '>=14.6'}
     requiresBuild: true
     dev: true
 
