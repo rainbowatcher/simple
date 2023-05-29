@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1-alpha.3",
   "private": true,
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "pnpm@8.6.0",
   "description": "simple your work.",
   "author": "rainbowatcher <rainbow-w@qq.com>",
   "license": "MIT",
@@ -22,13 +22,13 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
-    "@rainbowatcher/eslint-config": "0.1.1",
+    "@rainbowatcher/eslint-config": "0.2.1",
     "@total-typescript/ts-reset": "^0.4.2",
-    "@types/node": "^18.16.13",
+    "@types/node": "^18.16.16",
     "@types/validator": "^13.7.17",
     "bumpp": "^9.1.0",
     "cross-env": "^7.0.3",
-    "eslint": "~8.39.0",
+    "eslint": "~8.41.0",
     "husky": "^8.0.3",
     "jiti": "^1.18.2",
     "nodemon": "^2.0.22",
@@ -36,7 +36,7 @@
     "taze": "^0.10.1",
     "typescript": "^5.0.4",
     "validator": "^13.9.0",
-    "vite": "4.3.8",
+    "vite": "4.3.9",
     "zod": "^3.21.4"
   }
 }
