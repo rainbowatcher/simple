@@ -15,7 +15,7 @@ const server = createServer(listener)
 
 if (isDev) {
   logger.info("Start in development mode")
-  import("vite").then((vite) => {
+  void import("vite").then((vite) => {
     vite.createServer({
       root: "../web",
       server: {
@@ -26,7 +26,7 @@ if (isDev) {
       logger.info("Create vite server in middleware mode")
       server.on("close", () => {
         logger.info("Detect server close, close vite server")
-        viteServer.close().catch(() => logger.error("Vite server stop failed"))
+        viteServer.close().catch(() => { logger.error("Vite server stop failed") })
       })
       // if frontend router did not match, then fallback to backend router
       app.use(h3.fromNodeMiddleware(viteServer.middlewares))
@@ -44,6 +44,4 @@ if (isDev) {
   )
 }
 
-server.listen(3210, () =>
-  logger.info("Server start listening at http://localhost:%d", 3210),
-)
+server.listen(3210, () => { logger.info("Server start listening at http://localhost:%d", 3210) })

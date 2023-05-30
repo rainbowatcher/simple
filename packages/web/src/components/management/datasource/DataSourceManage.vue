@@ -85,7 +85,7 @@ const pagination = ref({
 const [showAddModal, toggleAddModal] = useToggle(false)
 const [showEditModal, toggleEditModal] = useToggle(false)
 const { result, keyword, search } = useSearch<RowData>(voList, {
-  fuzzy: true,
+  shouldFuzzy: true,
 })
 
 async function addDataSource(rowData: Ref<DataSourceVO>) {

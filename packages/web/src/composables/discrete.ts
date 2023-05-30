@@ -3,10 +3,10 @@ import { darkTheme } from "naive-ui"
 
 
 const configProviderPropsRef = computed<ConfigProviderProps>(() => ({
-  theme: useDark().value === false ? undefined : darkTheme,
+  theme: !useDark().value ? undefined : darkTheme,
 }))
 
-export const useDiscreteApi = () => {
+export function useDiscreteApi() {
   const { message } = createDiscreteApi(["message", "dialog", "notification", "loadingBar"], {
     configProviderProps: configProviderPropsRef,
   })

@@ -2,40 +2,40 @@ import type { MaybeRef } from "@vueuse/core"
 import type { UnwrapRef } from "vue"
 import Fuse from "fuse.js"
 
-export const useState = <T>(state: T) => {
-  const _state = ref(state)
+export function useState <T>(state: T) {
+  const stateRef = ref(state)
 
   const setState = (state: UnwrapRef<T>) => {
-    _state.value = state
+    stateRef.value = state
   }
 
-  return [_state, setState] as const
+  return [stateRef, setState] as const
 }
 
 export type SearchOptions<T> = {
   filter?: (item: T) => boolean
-  strict?: MaybeRef<boolean>
-  fuzzy?: boolean
+  isStrict?: MaybeRef<boolean>
+  shouldFuzzy?: boolean
 }
 
-export const useSearch = <T>(source: MaybeRef<T[] | undefined>, options?: SearchOptions<T>) => {
+export function useSearch <T>(source: MaybeRef<T[] | undefined>, options?: SearchOptions<T>) {
   const {
-    strict = false,
-    fuzzy = false,
+    isStrict = false,
+    shouldFuzzy = false,
     filter = (item: T) => {
-      const _keyword = unref(keyword)
-      const _strict = unref(strict)
+      const keywordValue = unref(keyword)
+      const isStrictValue = unref(isStrict)
       if (
         typeof item === "string" ||
         typeof item === "number" ||
         typeof item === "boolean"
       ) {
-        if (_strict) {
-          return String(item).includes(_keyword)
+        if (isStrictValue) {
+          return String(item).includes(keywordValue)
         }
         return String(item)
           .toLocaleLowerCase()
-          .includes(_keyword.toLocaleLowerCase())
+          .includes(keywordValue.toLocaleLowerCase())
       } else if (typeof item === "object") {
         // no implement
         return searchObject(item as Record<string, unknown>)
@@ -67,18 +67,18 @@ export const useSearch = <T>(source: MaybeRef<T[] | undefined>, options?: Search
   }
 
   function doSearch() {
-    const _source = unref(source)
+    const sourceValue = unref(source)
     // when keyword is empty string
     if (!keyword.value) {
       return {
-        result: _source,
+        result: sourceValue,
       }
     }
 
-    if (fuzzy) {
-      const fuseReturn = new Fuse(_source || [], {
-        keys: _source?.[0] ? Object.keys(_source[0]) : [],
-        isCaseSensitive: unref(strict),
+    if (shouldFuzzy) {
+      const fuseReturn = new Fuse(sourceValue || [], {
+        keys: sourceValue?.[0] ? Object.keys(sourceValue[0]) : [],
+        isCaseSensitive: unref(isStrict),
         includeMatches: true,
         includeScore: true,
       }).search(keyword.value)
@@ -89,7 +89,7 @@ export const useSearch = <T>(source: MaybeRef<T[] | undefined>, options?: Search
       }
     }
     return {
-      result: _source?.filter(filter),
+      result: sourceValue?.filter(filter),
     }
   }
 
@@ -100,7 +100,7 @@ export const useSearch = <T>(source: MaybeRef<T[] | undefined>, options?: Search
   // when source changed, do search immediately
   watch(
     () => source,
-    () => search(),
+    () => { search() },
   )
 
   return {
@@ -111,5 +111,6 @@ export const useSearch = <T>(source: MaybeRef<T[] | undefined>, options?: Search
   }
 }
 
-export const useType = (status = 10001) =>
-  status > 10000 ? "error" : "success"
+export function useType(status = 10001) {
+  return status > 10000 ? "error" : "success"
+}

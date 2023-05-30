@@ -1,7 +1,7 @@
-export const useAllowInteger = (input: string) => {
+export function useAllowInteger(input: string) {
   return !input || /^\d+$/.test(input)
 }
 
-export const useNotAllowWhiteSpace = (input: string) => {
+export function useNotAllowWhiteSpace(input: string) {
   return !input || !input.includes(" ")
 }

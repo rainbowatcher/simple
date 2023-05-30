@@ -1,13 +1,10 @@
 import { resolve } from "node:path"
 import { readFile } from "node:fs/promises"
-import { url } from "node:inspector"
 import { ensureDir, exists, mkdir, move, pathExists, rm, writeFile } from "fs-extra"
 import { globby } from "globby"
 import { createDirIfNotExists, getUserConfigDir } from "../utils/path"
 import { responses } from "../utils/http"
-// import useLogger from "../utils/logger"
 
-// const logger = useLogger("template")
 export type FileItem = {
   name: string
   path: string
@@ -105,7 +102,7 @@ export class TemplateService {
     if (!await exists(filePath)) return NOT_FOUND
     if (physics) {
       ensureDir(filePath)
-        .then(async () => await rm(filePath, { recursive: true }))
+        .then(async () => { await rm(filePath, { recursive: true }) })
         .catch(() => rm(filePath))
     } else {
       await move(filePath, resolve(trashDir, path))
@@ -136,7 +133,7 @@ export class TemplateService {
       const fileStr = await readFile(resolve(dir, file), "utf-8")
       return SUCCESS.withData(fileStr)
     } catch (error) {
-      return IO_ERROR.withMsg(`${error}`)
+      return IO_ERROR.withMsg(String(error))
     }
   }
 }

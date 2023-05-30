@@ -3,7 +3,7 @@ import { withDirectives } from "vue"
 import type { Resp } from "server/utils/http"
 import type { FileItem } from "server/service"
 import type { TreeDropInfo, TreeOption } from "naive-ui/es/tree/src/interface"
-import type { onUpdateExpandedKeys } from "naive-ui/es/tree/src/Tree"
+import type { OnUpdateSelectedKeys, onUpdateExpandedKeys } from "naive-ui/es/tree/src/Tree"
 import client from "./client"
 
 function listTemplates() {
@@ -26,7 +26,7 @@ function loadTemplate(path: string) {
   return useAxios<Resp<string>>("/template/get", { method: "GET", params: { path } }, client)
 }
 
-export const useTemplateTree = () => {
+export function useTemplateTree() {
   const data = ref<TreeOption[]>([])
   const searchKey = ref<string>()
   const selectedKey = ref<string>()
@@ -60,7 +60,7 @@ export const useTemplateTree = () => {
       addVirtual()
     }
 
-    nextTick(() => {
+    void nextTick(() => {
       const virtualItem = document.querySelector<HTMLDivElement>(".virtual-item")
 
       const handler = (e: KeyboardEvent) => {
@@ -88,25 +88,26 @@ export const useTemplateTree = () => {
   }
 
   function addFile(name: string) {
-    addTemplate(name)
-    list()
+    addTemplate(name).then(async () => {
+      await list()
+    }).catch(() => {})
   }
 
   async function trashFile(path?: string) {
     if (!path) return
-    trashTemplate(path, !!path.startsWith("trash/")).then(() => {
-      list()
+    await trashTemplate(path, !!path.startsWith("trash/")).then(async () => {
+      await list()
       useDiscreteApi().messager.success("Success")
     })
   }
 
   function refresh() {
     searchKey.value = undefined
-    list()
+    void list()
   }
 
   function save(path: string, content: string, update: boolean) {
-    saveTemplate(path, content, update)
+    void saveTemplate(path, content, update)
   }
 
   function addVirtual() {
@@ -122,15 +123,16 @@ export const useTemplateTree = () => {
     //
   }
 
-  // @ts-expect-error type use undefined instead of null
-  const onSelect: OnUpdateSelectedKeys = (
+
+  function onSelect(
     _keys: Array<string | number>,
     _option: Array<TreeOption | undefined>,
     meta: {
       node: TreeOption | undefined
       action: "select" | "unselect"
-    }) => {
-    if (!meta.node) return
+    }) {
+    if (!meta.node)
+      return
     if (meta.action === "select") {
       selectedKey.value = meta.node.key as string
     }

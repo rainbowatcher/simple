@@ -17,8 +17,8 @@ const fileReporter: ConsolaReporter = {
     const { date, type, tag } = label
     const formatted = formatDate(date)
     const level = type.toUpperCase().padEnd(5, " ")
-    const _tag = tag ? ` ${tag}` : ""
-    stream.write(`${formatted} [${level}]${_tag}: ${format(label.args[0], ...label.args.slice(1))}\n`)
+    const tagStr = tag ? ` ${tag}` : ""
+    stream.write(`${formatted} [${level}]${tagStr}: ${format(label.args[0], ...(label.args as string[]).slice(1))}\n`)
   },
 }
 
@@ -27,8 +27,8 @@ const fancyReporter: ConsolaReporter = {
     const { date, type, tag } = label
     const formatted = formatDate(date)
     const level = type.toUpperCase().padEnd(5, " ")
-    const _tag = tag ? ` ${tag}` : ""
-    process.stdout.write(`${formatted} [${level}]${_tag}: ${format(label.args[0], ...label.args.slice(1))}\n`)
+    const tagStr = tag ? ` ${tag}` : ""
+    process.stdout.write(`${formatted} [${level}]${tagStr}: ${format(label.args[0], ...(label.args as string[]).slice(1))}\n`)
   },
 }
 

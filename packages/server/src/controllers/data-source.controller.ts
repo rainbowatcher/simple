@@ -11,28 +11,28 @@ function dataSourceController(router: Router) {
   router.get(
     apiPath, eventHandler(async (e) => {
       await parseRequest(e)
-      return await (await dataSourceService.getVOList()).send(e)
+      await (await dataSourceService.getVOList()).send(e)
     }),
   )
 
   router.post(
     `${apiPath}/add`, eventHandler(async (e) => {
       const { body } = await parseRequest(e)
-      return await (await dataSourceService.add(body)).send(e)
+      await (await dataSourceService.add(body)).send(e)
     }),
   )
 
   router.delete(
     `${apiPath}/del`, eventHandler(async (e) => {
       const { body } = await parseRequest<DataSourceSchema>(e)
-      return await (await dataSourceService.del(body)).send(e)
+      await (await dataSourceService.del(body)).send(e)
     }),
   )
 
   router.post(
     `${apiPath}/update`, eventHandler(async (e) => {
       const { body } = await parseRequest<DataSourceVO>(e)
-      return await (await dataSourceService.update(body)).send(e)
+      await (await dataSourceService.update(body)).send(e)
     }),
   )
 }

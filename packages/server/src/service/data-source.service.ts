@@ -31,7 +31,7 @@ export class DataSourceService {
       config = JSON.parse(configFile) as DataSourceConfig
     } catch (error) {
       logger.error("DataSource config is invalid")
-      throw error
+      throw new Error(String(error))
     }
 
     return config

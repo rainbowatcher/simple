@@ -34,26 +34,26 @@ export type EditorOptions = {
   container: Ref<HTMLDivElement | undefined>
   data?: MaybeRef<string>
   lang?: MaybeRef<string>
-  minimap?: boolean
-  readOnly?: boolean
+  hasMinimap?: boolean
+  isReadOnly?: boolean
 }
 
-export const useMonacoEditor = (useOptions: EditorOptions) => {
+export function useMonacoEditor(useOptions: EditorOptions) {
   const instance = shallowRef<monaco.editor.IStandaloneCodeEditor>()
   const [isLoading, toggleLoading] = useToggle(true)
   const {
     data = "",
     lang = "handlebars",
     container,
-    minimap = false,
-    readOnly = false,
+    hasMinimap = false,
+    isReadOnly = false,
   } = useOptions
   // const options = { minimap: { enabled: false } }
 
-  nextTick(async () => {
-    const _container = unref(container)
-    if (!_container) return
-    instance.value = monaco.editor.create(_container, { readOnly, minimap: { enabled: minimap } })
+  void nextTick(() => {
+    const containerValue = unref(container)
+    if (!containerValue) return
+    instance.value = monaco.editor.create(containerValue, { readOnly: isReadOnly, minimap: { enabled: hasMinimap } })
     toggleLoading(false)
 
     window.addEventListener("resize", resize)
@@ -86,11 +86,13 @@ export const useMonacoEditor = (useOptions: EditorOptions) => {
     })
   }
 
+  const dispose = () => instance.value?.dispose()
+
   return {
     data,
     instance,
     isLoading,
     resize,
-    dispose: instance.value?.dispose,
+    dispose,
   }
 }

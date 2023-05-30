@@ -6,15 +6,15 @@ import isIP from "validator/es/lib/isIP"
 import isFQDN from "validator/es/lib/isFQDN"
 import client from "./client"
 
-export const reqDataSources = () => {
+export function reqDataSources() {
   return useAxios<Resp<DataSourceVO[]>>("/datasources", client)
 }
 
-export const reqAddDataSource = (data: DataSourceVO) => {
+export function reqAddDataSource(data: DataSourceVO) {
   return useAxios<Resp<DataSourceVO>>("/datasources/add", { method: "POST", data }, client)
 }
 
-export const reqDelDataSource = (type: DataSourceType, name: string) => {
+export function reqDelDataSource(type: DataSourceType, name: string) {
   return useAxios<Resp>(
     "/datasources/del",
     {
@@ -28,35 +28,37 @@ export const reqDelDataSource = (type: DataSourceType, name: string) => {
   )
 }
 
-export const reqUpdate = (data: DataSourceVO) => {
+export function reqUpdate(data: DataSourceVO) {
   return useAxios<Resp>("/datasources/update", { method: "POST", data }, client)
 }
 
-export const useDataSourceFormRules = (): FormRules => ({
-  host: {
-    required: true,
-    trigger: "blur",
-    validator: (_, value) => typeof value === "string" && (isIP(value) || isFQDN(value)),
-  },
-  port: {
-    required: true,
-    trigger: "blur",
-    validator: (_, value) => {
-      if (!value) {
-        return new Error("port is required")
-      } else if (Number.isNaN(Number(value))) {
-        return new Error("Not a number")
-      } else if (Number(value) < 0) {
-        return new Error("Can't less than zero")
-      } else if (Number(value) > 65535) {
-        return new Error("Can't greater than 65535")
-      }
-      return true
+export function useDataSourceFormRules(): FormRules {
+  return {
+    host: {
+      required: true,
+      trigger: "blur",
+      validator: (_, value) => typeof value === "string" && (isIP(value) || isFQDN(value)),
     },
-  },
-  name: { required: true, trigger: "blur" },
-  type: { required: true, trigger: "blur" },
-  user: { required: false },
-  password: { required: false },
-  database: { required: false },
-})
+    port: {
+      required: true,
+      trigger: "blur",
+      validator: (_, value) => {
+        if (!value) {
+          return new Error("port is required")
+        } else if (Number.isNaN(Number(value))) {
+          return new Error("Not a number")
+        } else if (Number(value) < 0) {
+          return new Error("Can't less than zero")
+        } else if (Number(value) > 65535) {
+          return new Error("Can't greater than 65535")
+        }
+        return true
+      },
+    },
+    name: { required: true, trigger: "blur" },
+    type: { required: true, trigger: "blur" },
+    user: { required: false },
+    password: { required: false },
+    database: { required: false },
+  }
+}

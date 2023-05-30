@@ -16,7 +16,7 @@ export const macOSDataDir = macOSConfigDir
 export const winConfigDir = `${userHomeDir}\\AppData\\Roaming`
 export const winDataDir = winConfigDir
 
-export const getUserConfigDir = () => {
+export function getUserConfigDir() {
   switch (platform) {
     case "darwin":
       return `${macOSConfigDir}/${projectName}`
@@ -30,7 +30,7 @@ export const getUserConfigDir = () => {
   }
 }
 
-export const getUserDataDir = () => {
+export function getUserDataDir() {
   switch (platform) {
     case "darwin":
       return `${macOSDataDir}/${projectName}`
@@ -46,28 +46,28 @@ export const getUserDataDir = () => {
 
 export const getUserConfigPath = () => `${getUserConfigDir()}/simple.json`
 
-export const getLogDir = () => {
+export function getLogDir() {
   const dataDir = getUserDataDir()
   return path.resolve(dataDir, "log")
 }
 
 export async function createFileIfNotExists(filePath: string, initContent?: string) {
   try {
-    const p = await fs.exists(filePath)
-    if (!p) {
+    const isExists = await fs.exists(filePath)
+    if (!isExists) {
       await fs.createFile(filePath)
       if (initContent)
         await fs.writeFile(filePath, initContent)
     }
   } catch (e) {
-    return console.log(e)
+    console.log(String(e))
   }
 }
 
 export async function createDirIfNotExists(filePath: string) {
   try {
-    const p = await fs.exists(filePath)
-    if (!p) {
+    const isExists = await fs.exists(filePath)
+    if (!isExists) {
       await fs.mkdir(filePath)
     }
   } catch (e) {
