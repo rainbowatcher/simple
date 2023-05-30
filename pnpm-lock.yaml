@@ -26,6 +26,9 @@ importers:
       '@types/validator':
         specifier: ^13.7.17
         version: 13.7.17
+      '@unocss/eslint-config':
+        specifier: ^0.51.13
+        version: 0.51.13(eslint@8.39.0)(typescript@5.0.4)
       bumpp:
         specifier: ^9.1.0
         version: 9.1.0
@@ -53,6 +56,9 @@ importers:
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
+      unocss:
+        specifier: ^0.51.13
+        version: 0.51.13(postcss@8.4.23)(vite@4.3.8)
       validator:
         specifier: ^13.9.0
         version: 13.9.0
@@ -128,9 +134,6 @@ importers:
       sirv:
         specifier: ^2.0.3
         version: 2.0.3
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
 
   packages/web:
     dependencies:
@@ -1427,7 +1430,10 @@ packages:
     resolution: {integrity: sha512-yCX9WpdQKaLufz5luG4aJbOpdXf/fjwGMcLFXZVPUz3QqLirG5QcwwnIHNf8cjLjxK4qtzTO8udUtMQSAToQnQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.41.0)
       '@types/json-schema': 7.0.11
@@ -1438,14 +1444,17 @@ packages:
       eslint: 8.41.0
       eslint-scope: 5.1.1
       semver: 7.5.0
+      tsutils: 3.21.0(typescript@5.0.4)
+      typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
-      - typescript
     dev: true
 
   /@typescript-eslint/visitor-keys@5.59.7:
     resolution: {integrity: sha512-tyN+X2jvMslUszIiYbF0ZleP+RqQsFVpGrKI6e0Eet1w8WmhsAtmzaqm8oM8WJQ1ysLwhnsK/4hYHJjOgJVfQQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
       '@typescript-eslint/types': 5.59.7
       eslint-visitor-keys: 3.4.1
@@ -2921,7 +2930,7 @@ packages:
       eslint: 8.41.0
       natural-compare: 1.4.0
       nth-check: 2.1.1
-      postcss-selector-parser: 6.0.11
+      postcss-selector-parser: 6.0.13
       semver: 7.5.0
       vue-eslint-parser: 9.3.0(eslint@8.41.0)
       xml-name-validator: 4.0.0
@@ -4012,8 +4021,8 @@ packages:
     hasBin: true
     dev: true
 
-  /jsonc-eslint-parser@2.2.0:
-    resolution: {integrity: sha512-x5QjzBOORd+T2EjErIxJnkOEbLVEdD1ILEeBbIJt8Eq/zUn7P7M8qdnWiNVBK5f8oxnJpc6SBHOeeIEl/swPjg==}
+  /jsonc-eslint-parser@2.3.0:
+    resolution: {integrity: sha512-9xZPKVYp9DxnM3sd1yAsh/d59iIaswDkai8oTxbursfKYbg/ibjX0IzFt35+VZ8iEW453TVTXztnRvYUQlAfUQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       acorn: 8.8.2
@@ -4993,8 +5002,8 @@ packages:
       pathe: 1.1.0
     dev: true
 
-  /postcss-selector-parser@6.0.11:
-    resolution: {integrity: sha512-zbARubNdogI9j7WY4nQJBiNqQf3sLS3wCP4WfOidu+p28LofJqDH1tcXypGrcmMHhDk2t9wGhCsYe/+szLTy1g==}
+  /postcss-selector-parser@6.0.13:
+    resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}
     engines: {node: '>=4'}
     dependencies:
       cssesc: 3.0.0

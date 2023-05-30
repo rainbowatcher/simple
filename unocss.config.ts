@@ -1,8 +1,5 @@
-import { defineConfig } from "unocss"
-import presetIcons from "@unocss/preset-icons"
-import presetUno from "@unocss/preset-uno"
-import presetAttributify from "@unocss/preset-attributify"
-import { useAppConfig } from "./src/composables/config"
+import { defineConfig, presetAttributify, presetIcons, presetUno } from "unocss"
+import { useAppConfig } from "./packages/web/src/composables/config"
 
 export default defineConfig({
   shortcuts: [
@@ -15,10 +12,6 @@ export default defineConfig({
       scale: 1.2,
       extraProperties: {
         display: "inline-block",
-      },
-      collections: {
-        carbon: () => import("@iconify-json/carbon/icons.json").then(i => i.default),
-        mdi: () => import("@iconify-json/mdi/icons.json").then(i => i.default),
       },
     }),
   ],
