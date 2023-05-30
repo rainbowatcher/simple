@@ -9,9 +9,7 @@
   "main": "../../dist/server.js",
   "scripts": {
     "build": "rollup -c",
-    "dev": "cross-env NODE_ENV=development pnpm start",
-    "start": "nodemon src/server.ts",
-    "typecheck": "tsc --noEmit"
+    "dev": "cross-env NODE_ENV=development nodemon server.ts"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",

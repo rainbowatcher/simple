@@ -22,7 +22,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
-    "@rainbowatcher/eslint-config": "0.2.1",
+    "@rainbowatcher/eslint-config": "^0.2.1",
     "@total-typescript/ts-reset": "^0.4.2",
     "@types/node": "^20.2.5",
     "@types/validator": "^13.7.17",

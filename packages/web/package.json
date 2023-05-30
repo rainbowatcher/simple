@@ -6,8 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "typecheck": "tsc --noEmit"
+    "build": "vite build"
   },
   "dependencies": {
     "naive-ui": "^2.34.4",
