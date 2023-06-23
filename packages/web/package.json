@@ -16,22 +16,22 @@
     "vue-router": "4.2.2"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.1.17",
+    "@iconify-json/carbon": "^1.1.18",
     "@iconify-json/mdi": "^1.1.52",
-    "@iconify-json/simple-icons": "^1.1.55",
-    "@unocss/preset-attributify": "^0.52.5",
-    "@unocss/preset-icons": "^0.52.5",
-    "@unocss/preset-uno": "^0.52.5",
-    "@unocss/reset": "^0.52.5",
+    "@iconify-json/simple-icons": "^1.1.57",
+    "@unocss/preset-attributify": "^0.53.3",
+    "@unocss/preset-icons": "^0.53.3",
+    "@unocss/preset-uno": "^0.53.3",
+    "@unocss/reset": "^0.53.3",
     "@vitejs/plugin-vue": "^4.2.3",
-    "@vueuse/core": "^10.1.2",
-    "@vueuse/integrations": "^10.1.2",
+    "@vueuse/core": "^10.2.0",
+    "@vueuse/integrations": "^10.2.0",
     "axios": "^1.4.0",
     "fuse.js": "^6.6.2",
-    "monaco-editor": "^0.38.0",
+    "monaco-editor": "^0.39.0",
     "unplugin-auto-import": "^0.16.4",
-    "unplugin-vue-components": "^0.25.0",
+    "unplugin-vue-components": "^0.25.1",
     "vite": "^4.3.9",
-    "vite-plugin-pages": "^0.30.1"
+    "vite-plugin-pages": "^0.31.0"
   }
 }
