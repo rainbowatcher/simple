@@ -2,7 +2,7 @@ import type { MaybeRef } from "@vueuse/core"
 import type { UnwrapRef } from "vue"
 import Fuse from "fuse.js"
 
-export function useState <T>(state: T) {
+export function useState<T>(state: T) {
   const stateRef = ref(state)
 
   const setState = (state: UnwrapRef<T>) => {
@@ -18,7 +18,7 @@ export type SearchOptions<T> = {
   shouldFuzzy?: boolean
 }
 
-export function useSearch <T>(source: MaybeRef<T[] | undefined>, options?: SearchOptions<T>) {
+export function useSearch<T>(source: MaybeRef<T[] | undefined>, options?: SearchOptions<T>) {
   const {
     isStrict = false,
     shouldFuzzy = false,
