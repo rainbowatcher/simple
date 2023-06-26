@@ -18,7 +18,7 @@
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.18",
     "@iconify-json/mdi": "^1.1.52",
-    "@iconify-json/simple-icons": "^1.1.57",
+    "@iconify-json/simple-icons": "^1.1.58",
     "@unocss/preset-attributify": "^0.53.3",
     "@unocss/preset-icons": "^0.53.3",
     "@unocss/preset-uno": "^0.53.3",
