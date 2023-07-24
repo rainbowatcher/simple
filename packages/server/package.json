@@ -2,7 +2,7 @@
   "name": "simple-server",
   "type": "module",
   "version": "0.0.1-alpha.3",
-  "packageManager": "pnpm@8.6.9",
+  "packageManager": "pnpm@8.6.10",
   "description": "simple your work.",
   "author": "rainbowatcher <rainbow-w@qq.com>",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "picocolors": "^1.0.0",
     "rollup": "^3.26.3",
     "rollup-plugin-terser": "^7.0.2",
-    "rotating-file-stream": "^3.1.0",
+    "rotating-file-stream": "^3.1.1",
     "sirv": "^2.0.3"
   }
 }
