@@ -17,7 +17,7 @@ function templateController(router: Router) {
 
   router.post(
     `${apiPath}/add`, eventHandler(async (e) => {
-      const { body } = await parseRequest<{name:string; content: string}>(e)
+      const { body } = await parseRequest<{name: string; content: string}>(e)
       const res = await templateService.save(body?.name, body?.content)
       return res.send(e)
     }),
@@ -26,7 +26,7 @@ function templateController(router: Router) {
   router.post(
     `${apiPath}/save`, eventHandler(async (e) => {
       await parseRequest(e)
-      const { body } = await parseRequest<{path:string; content: string; update: boolean}>(e)
+      const { body } = await parseRequest<{path: string; content: string; update: boolean}>(e)
       const res = await templateService.save(body?.path, body?.content, body?.update)
       return res.send(e)
     }),
@@ -35,7 +35,7 @@ function templateController(router: Router) {
   router.delete(
     `${apiPath}/trash`, eventHandler(async (e) => {
       await parseRequest(e)
-      const { body } = await parseRequest<{name:string; physics:boolean}>(e)
+      const { body } = await parseRequest<{name: string; physics: boolean}>(e)
       const res = await templateService.trash(body?.name, body?.physics)
       return res.send(e)
     }),
@@ -43,7 +43,7 @@ function templateController(router: Router) {
 
   router.post(
     `${apiPath}/folder`, eventHandler(async (e) => {
-      const { body } = await parseRequest<{name:string; content: string}>(e)
+      const { body } = await parseRequest<{name: string; content: string}>(e)
       const res = await templateService.createFolder(body?.name)
       return res.send(e)
     }),
