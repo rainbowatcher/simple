@@ -45,11 +45,14 @@ export function useDataSourceFormRules(): FormRules {
       validator: (_, value) => {
         if (!value) {
           return new Error("port is required")
-        } else if (Number.isNaN(Number(value))) {
+        }
+        else if (Number.isNaN(Number(value))) {
           return new Error("Not a number")
-        } else if (Number(value) < 0) {
+        }
+        else if (Number(value) < 0) {
           return new Error("Can't less than zero")
-        } else if (Number(value) > 65535) {
+        }
+        else if (Number(value) > 65535) {
           return new Error("Can't greater than 65535")
         }
         return true

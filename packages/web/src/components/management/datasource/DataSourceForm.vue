@@ -51,7 +51,8 @@ function submit() {
       if (!errors) {
         emit("submitModel", data)
         emit("closeModel")
-      } else {
+      }
+      else {
         message.error("Validate failed")
       }
     })

@@ -59,7 +59,8 @@ export async function createFileIfNotExists(filePath: string, initContent?: stri
       if (initContent)
         await fs.writeFile(filePath, initContent)
     }
-  } catch (e) {
+  }
+  catch (e) {
     console.log(String(e))
   }
 }
@@ -70,7 +71,8 @@ export async function createDirIfNotExists(filePath: string) {
     if (!isExists) {
       await fs.mkdir(filePath)
     }
-  } catch (e) {
+  }
+  catch (e) {
     console.log(e)
   }
 }

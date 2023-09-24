@@ -34,7 +34,8 @@ if (isDev) {
       logger.error("Vite server start failed")
     })
   })
-} else {
+}
+else {
   logger.info("Start in production mode")
   logger.info("Serve static file")
   app.use(

@@ -20,7 +20,8 @@ function buildFileTree(fileList: string[]): FileTree[] {
 
       if (existingNode) {
         currentLevel = existingNode.children || []
-      } else {
+      }
+      else {
 
         currentLevel.push(newNode)
         currentLevel = newNode.children!

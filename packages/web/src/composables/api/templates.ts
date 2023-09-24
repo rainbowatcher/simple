@@ -56,7 +56,8 @@ export function useTemplateTree() {
     if (virtualItem) {
       virtualItem.focus()
       return
-    } else {
+    }
+    else {
       addVirtual()
     }
 
@@ -68,7 +69,8 @@ export function useTemplateTree() {
           removeVirtual()
           if (virtualItem?.innerText)addFile(virtualItem?.innerText)
           window?.removeEventListener("keydown", handler)
-        } else if (e.key === "Escape") {
+        }
+        else if (e.key === "Escape") {
           clear()
         }
       }
@@ -187,17 +189,20 @@ export function useTemplateTree() {
     if (dropPosition === "inside") {
       if (node.children) {
         node.children.unshift(dragNode)
-      } else {
+      }
+      else {
         node.children = [dragNode]
       }
-    } else if (dropPosition === "before") {
+    }
+    else if (dropPosition === "before") {
       const [nodeSiblings, nodeIndex] = findSiblingsAndIndex(
         node,
         data.value,
       )
       if (nodeSiblings === undefined || nodeIndex === undefined) return
       nodeSiblings.splice(nodeIndex, 0, dragNode)
-    } else if (dropPosition === "after") {
+    }
+    else if (dropPosition === "after") {
       const [nodeSiblings, nodeIndex] = findSiblingsAndIndex(
         node,
         data.value,

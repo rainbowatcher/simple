@@ -29,7 +29,8 @@ export class DataSourceService {
     try {
       const configFile = await fs.readFile(configPath, { encoding: "utf-8" })
       config = JSON.parse(configFile) as DataSourceConfig
-    } catch (error) {
+    }
+    catch (error) {
       logger.error("DataSource config is invalid")
       throw new Error(String(error))
     }
@@ -75,10 +76,12 @@ export class DataSourceService {
     if (dataSource) {
       if (dataSource[name]) {
         return CONFLICT.withMsg("Datasource %s with type %s already exists", name, type)
-      } else {
+      }
+      else {
         dataSource[name] = dataSourceDO
       }
-    } else {
+    }
+    else {
       dataSources[type] = {
         [name]: dataSourceDO,
       }
@@ -103,7 +106,8 @@ export class DataSourceService {
       const configPath = this.configFilePath()
       await fs.writeFile(configPath, JSON.stringify(datasources, null, 2), "utf-8")
       return SUCCESS
-    } else {
+    }
+    else {
       return NOT_FOUND.withMsg("DataSource %s not exists", name)
     }
   }
@@ -121,12 +125,14 @@ export class DataSourceService {
       dataSource[name] = DataSourceDO.fromVO(vo)
       try {
         await fs.writeFile(this.configFilePath(), JSON.stringify(all, null, 2), "utf-8")
-      } catch (error: unknown) {
+      }
+      catch (error: unknown) {
         logger.error("Config update fail")
         throw error
       }
       return SUCCESS
-    } else {
+    }
+    else {
       return NOT_FOUND.withMsg("Type %s with name %s not found", type, name)
     }
   }

@@ -30,7 +30,8 @@ export class TemplateService {
       const globs = await globby("**", { cwd: dir, /* ignore: ["trash"], */ markDirectories: true, onlyFiles: false })
       templates = this.toFileTree(globs)
       return SUCCESS.withData(templates)
-    } catch (e) {
+    }
+    catch (e) {
       return IO_ERROR.withMsg("Fail to read dir: %s", dir)
     }
   }
@@ -57,7 +58,8 @@ export class TemplateService {
 
         if (existingNode) {
           currentLevel = existingNode.children || []
-        } else {
+        }
+        else {
           currentLevel.push(newNode)
           currentLevel = newNode.children!
         }
@@ -84,10 +86,12 @@ export class TemplateService {
     if (await exists(filePath)) {
       if (update) {
         await writeFile(filePath, content)
-      } else {
+      }
+      else {
         return CONFLICT
       }
-    } else {
+    }
+    else {
       await writeFile(filePath, content)
     }
     return SUCCESS
@@ -104,7 +108,8 @@ export class TemplateService {
       ensureDir(filePath)
         .then(async () => { await rm(filePath, { recursive: true }) })
         .catch(() => rm(filePath))
-    } else {
+    }
+    else {
       await move(filePath, resolve(trashDir, path))
     }
     return SUCCESS
@@ -119,7 +124,8 @@ export class TemplateService {
     try {
       if (await pathExists(distDir)) return CONFLICT
       await mkdir(distDir)
-    } catch (error) {
+    }
+    catch (error) {
       return IO_ERROR
     }
     return SUCCESS
@@ -132,7 +138,8 @@ export class TemplateService {
     try {
       const fileStr = await readFile(resolve(dir, file), "utf-8")
       return SUCCESS.withData(fileStr)
-    } catch (error) {
+    }
+    catch (error) {
       return IO_ERROR.withMsg(String(error))
     }
   }

@@ -36,10 +36,12 @@ export function useSearch<T>(source: MaybeRef<T[] | undefined>, options?: Search
         return String(item)
           .toLocaleLowerCase()
           .includes(keywordValue.toLocaleLowerCase())
-      } else if (typeof item === "object") {
+      }
+      else if (typeof item === "object") {
         // no implement
         return searchObject(item as Record<string, unknown>)
-      } else if (typeof item === "symbol") {
+      }
+      else if (typeof item === "symbol") {
         // no implement
         return false
       }
