@@ -28,7 +28,7 @@
     "mysql2": "^3.6.1",
     "oracledb": "^6.1.0",
     "picocolors": "^1.0.0",
-    "rollup": "^3.29.4",
+    "rollup": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "rotating-file-stream": "^3.1.1",
     "sirv": "^2.0.3"
