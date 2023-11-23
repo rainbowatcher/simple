@@ -2,6 +2,11 @@
 
 A selfhost server for simplify data works.
 
+this project should be rewrite, for the following reason:
+
+- we want the server has ability to connect database as much as possible
+- we want develop features as fast as possible
+
 ## Feature
 
 comming soon
