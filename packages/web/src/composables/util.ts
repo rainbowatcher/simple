@@ -1,5 +1,6 @@
 import type { MaybeRef } from "@vueuse/core"
 import type { UnwrapRef } from "vue"
+import type { FuseResultMatch } from "fuse.js"
 import Fuse from "fuse.js"
 
 export function useState<T>(state: T) {
@@ -50,7 +51,7 @@ export function useSearch<T>(source: MaybeRef<T[] | undefined>, options?: Search
   } = options ?? {}
   const keyword = ref("")
   const searchReturn = ref<T[]>()
-  const matchesReturn = ref<Array<readonly Fuse.FuseResultMatch[] | undefined>>()
+  const matchesReturn = ref<Array<readonly FuseResultMatch[] | undefined>>()
 
   // search method for the click or keyboard event
   function search(e?: KeyboardEvent | Event) {
