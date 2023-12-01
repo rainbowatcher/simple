@@ -1,0 +1,29 @@
+[package]
+name = "simple-server"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tokio = { version = "1.0", features = ["full"] }
+axum = "0.7.1"
+hyper = { version = "1", features = ["full"] }
+tower = "0.4"
+sqlx = { version = "0.7", features = [ "runtime-tokio", "tls-native-tls" ] }
+config = { version = "0.13", features = ["toml"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["chrono"]}
+tracing-appender = "0.2"
+listenfd = "1.0"
+lazy_static = "1.4.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+simple_derive = { path = "../simple_derive" }
+# serde_derive = "1.0"
+# chrono = "0.4.31"
+
+[[bin]]
+name = "server"
+path = "src/main.rs"

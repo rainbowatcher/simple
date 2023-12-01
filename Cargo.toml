@@ -1,0 +1,9 @@
+[workspace]
+members = ["server"]
+resolver = "2"
+
+[workspace.package]
+authors = ["rainbowatcher <rainbow-w@qq.com>"]
+version = "0.1.0"
+edition = "2021"
+publish = false

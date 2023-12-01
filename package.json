@@ -8,7 +8,7 @@
   "author": "rainbowatcher <rainbow-w@qq.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "pnpm --filter simple-server dev",
+    "dev": "cargo watch -C server -x run --why",
     "dev:web": "pnpm --filter simple-web dev",
     "debug": "pnpm dev -- --debug",
     "lint": "eslint .",

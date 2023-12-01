@@ -17,7 +17,8 @@ if (isDev) {
   logger.info("Start in development mode")
   void import("vite").then((vite) => {
     vite.createServer({
-      root: "../web",
+      configFile: "../../web/vite.config.ts",
+      appType: "custom",
       server: {
         middlewareMode: true,
         // hmr: server,
