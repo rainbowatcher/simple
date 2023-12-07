@@ -25,9 +25,9 @@
     "@commitlint/config-conventional": "^18.4.3",
     "@rainbowatcher/eslint-config": "^0.3.4",
     "@total-typescript/ts-reset": "^0.5.1",
-    "@types/node": "^20.10.2",
+    "@types/node": "^20.10.4",
     "@types/validator": "^13.11.7",
-    "@unocss/eslint-config": "^0.57.7",
+    "@unocss/eslint-config": "^0.58.0",
     "bumpp": "^9.2.0",
     "cross-env": "^7.0.3",
     "eslint": "~8.55.0",
@@ -36,12 +36,12 @@
     "ncc": "^0.3.6",
     "nodemon": "^3.0.2",
     "pkg": "^5.8.1",
-    "rollup-plugin-visualizer": "^5.9.3",
+    "rollup-plugin-visualizer": "^5.10.0",
     "taze": "^0.13.0",
-    "typescript": "^5.3.2",
-    "unocss": "^0.57.7",
+    "typescript": "^5.3.3",
+    "unocss": "^0.58.0",
     "validator": "^13.11.0",
-    "vite": "4.5.0",
+    "vite": "4.5.1",
     "zod": "^3.22.4"
   }
 }
