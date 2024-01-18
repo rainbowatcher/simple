@@ -12,14 +12,14 @@
   "dependencies": {
     "naive-ui": "^2.37.3",
     "split.js": "^1.6.5",
-    "vue": "^3.4.13",
+    "vue": "^3.4.14",
     "vue-i18n": "^9.9.0",
     "vue-router": "4.2.5"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.27",
     "@iconify-json/mdi": "^1.1.64",
-    "@iconify-json/simple-icons": "^1.1.87",
+    "@iconify-json/simple-icons": "^1.1.88",
     "@unocss/preset-attributify": "^0.58.3",
     "@unocss/preset-icons": "^0.58.3",
     "@unocss/preset-uno": "^0.58.3",
