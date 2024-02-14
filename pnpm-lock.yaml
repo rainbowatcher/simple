@@ -39,8 +39,8 @@ importers:
         specifier: ~8.56.0
         version: 8.56.0
       husky:
-        specifier: ^8.0.3
-        version: 8.0.3
+        specifier: ^9.0.11
+        version: 9.0.11
       jiti:
         specifier: ^1.21.0
         version: 1.21.0
@@ -64,7 +64,7 @@ importers:
         version: 5.3.3
       unocss:
         specifier: ^0.58.3
-        version: 0.58.3(postcss@8.4.32)(vite@5.0.11)
+        version: 0.58.3(postcss@8.4.33)(vite@5.0.11)
       validator:
         specifier: ^13.11.0
         version: 13.11.0
@@ -2074,7 +2074,7 @@ packages:
       sirv: 2.0.4
     dev: true
 
-  /@unocss/postcss@0.58.3(postcss@8.4.32):
+  /@unocss/postcss@0.58.3(postcss@8.4.33):
     resolution: {integrity: sha512-y1WQNvLUidypCu/tr6oJfaV4pjd8Lsk1N27ASEVsvockOH3MekRYpHtJfTl2fMk+1Y98AHv7hPAVjM2NlvhDow==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -2086,7 +2086,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.3.2
       magic-string: 0.30.5
-      postcss: 8.4.32
+      postcss: 8.4.33
     dev: true
 
   /@unocss/preset-attributify@0.58.3:
@@ -4399,9 +4399,10 @@ packages:
       ms: 2.1.3
     dev: true
 
-  /husky@8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
+  /husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
+    engines: {node: '>=18'}
+    hasBin: true
     dev: true
 
   /iconv-lite@0.6.3:
@@ -7171,7 +7172,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unocss@0.58.3(postcss@8.4.32)(vite@5.0.11):
+  /unocss@0.58.3(postcss@8.4.33)(vite@5.0.11):
     resolution: {integrity: sha512-2rnvghfiIDRQ2cOrmN4P7J7xV2p3yBK+bPAt1aoUxCXcszkLczAnQzh9c7IZ+p70kSVstK45cJTYV6TMzOLF7Q==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -7187,7 +7188,7 @@ packages:
       '@unocss/cli': 0.58.3
       '@unocss/core': 0.58.3
       '@unocss/extractor-arbitrary-variants': 0.58.3
-      '@unocss/postcss': 0.58.3(postcss@8.4.32)
+      '@unocss/postcss': 0.58.3(postcss@8.4.33)
       '@unocss/preset-attributify': 0.58.3
       '@unocss/preset-icons': 0.58.3
       '@unocss/preset-mini': 0.58.3
